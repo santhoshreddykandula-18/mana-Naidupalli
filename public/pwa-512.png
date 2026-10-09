@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#16a34a"/>
+      <stop offset="100%" style="stop-color:#15803d"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="512" height="512" rx="102.4" fill="url(#bg)"/>
+  <!-- Leaf/Village icon -->
+  <g transform="translate(256, 256)">
+    <!-- House shape -->
+    <polygon points="0,-112.64 -102.4,-10.24 102.4,-10.24" fill="white" opacity="0.95"/>
+    <rect x="-71.68" y="-10.24" width="143.36" height="112.64" rx="2" fill="white" opacity="0.95"/>
+    <!-- Door -->
+    <rect x="-25.6" y="51.2" width="51.2" height="51.2" rx="2" fill="#15803d"/>
+    <!-- MN text below -->
+    <text x="0" y="194.56" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="81.92px" fill="white" opacity="0.9">MN</text>
+  </g>
+</svg>

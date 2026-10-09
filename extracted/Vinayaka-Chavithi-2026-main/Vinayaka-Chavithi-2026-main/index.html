@@ -1,0 +1,4491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sri Ram Youth | Vinayaka Chavithi</title>
+
+<!-- =====================================================
+     PREMIUM FONTS
+===================================================== -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600;6..96,700&family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&family=Noto+Serif+Telugu:wght@400;500;600;700&family=Ponnala&display=swap" rel="stylesheet">
+
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+
+
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<!-- Font Awesome -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+<style>
+
+@font-face {
+    font-family: "Against";
+    src: url("fonts/against-regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* =====================================================
+   ROOT
+===================================================== */
+
+:root {
+    --navy: #071426;
+    --deep: #020812;
+    --navy2: #0d1d32;
+
+    --gold: #d6b56a;
+    --gold-light: #f0d995;
+
+    --ivory: #f7f1e3;
+    --muted: #aaa79f;
+
+    --gold-line: rgba(214,181,106,.35);
+}
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--navy);
+    color: var(--ivory);
+    font-family: "Montserrat", sans-serif;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/* =====================================================
+   FONTS
+===================================================== */
+
+.display {
+    font-family: "Cormorant Garamond", serif;
+}
+
+.cinematic {
+    font-family: "Great Vibes", cursive;
+}
+
+.telugu {
+    font-family: "Noto Serif Telugu", serif;
+}
+
+
+/* =====================================================
+   SECTIONS
+===================================================== */
+
+.section-dark {
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(214,181,106,.07),
+            transparent 35%
+        ),
+        var(--navy);
+}
+
+.section-deep {
+    background:
+        radial-gradient(
+            circle at 15% 25%,
+            rgba(214,181,106,.05),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 75%,
+            rgba(214,181,106,.04),
+            transparent 30%
+        ),
+        var(--deep);
+}
+
+
+/* =====================================================
+   COMMON
+===================================================== */
+
+.eyebrow {
+    color: var(--gold-light);
+    font-size: 9px;
+    letter-spacing: .38em;
+    text-transform: uppercase;
+}
+
+.divider {
+    width: 80px;
+    height: 1px;
+    background: var(--gold);
+    margin: 25px auto;
+}
+
+.gold-line {
+    width: 70px;
+    height: 1px;
+    display: inline-block;
+    background: var(--gold);
+}
+
+.section-title {
+    margin-top: 15px;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    line-height: .95;
+}
+
+.welcome-title {
+    white-space: nowrap;
+}
+
+
+/* =====================================================
+   INTRO
+===================================================== */
+
+#intro {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(214,181,106,.12),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #01050b,
+            #08182b 50%,
+            #01050b
+        );
+}
+
+.intro-glow {
+    position: absolute;
+
+    width: 55vw;
+    height: 55vw;
+
+    max-width: 650px;
+    max-height: 650px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(214,181,106,.15),
+            rgba(214,181,106,.03) 45%,
+            transparent 70%
+        );
+
+    filter: blur(12px);
+}
+
+
+/* =====================================================
+   CURTAINS
+===================================================== */
+
+.curtain {
+    position: absolute;
+
+    top: 0;
+
+    width: 51%;
+    height: 100%;
+
+    z-index: 5;
+
+    background:
+        linear-gradient(
+            90deg,
+            #01050b 0%,
+            #09192c 40%,
+            #020812 100%
+        );
+
+    box-shadow:
+        inset 0 0 80px rgba(0,0,0,.8);
+}
+
+#curtain-left {
+    left: 0;
+    transform-origin: left center;
+}
+
+#curtain-right {
+    right: 0;
+    transform-origin: right center;
+
+    background:
+        linear-gradient(
+            -90deg,
+            #01050b 0%,
+            #09192c 40%,
+            #020812 100%
+        );
+}
+
+
+/* =====================================================
+   INTRO CONTENT
+===================================================== */
+
+#intro-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+}
+
+.intro-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    line-height: 1;
+    margin: 0;
+}
+
+.intro-brand {
+    display: block;
+    font-family: "Bodoni Moda", "Cormorant Garamond", serif;
+    font-size: clamp(3.4rem, 7vw, 5.8rem);
+    font-weight: 600;
+    font-style: normal;
+    letter-spacing: .01em;
+    color: #fff;
+    text-shadow:
+        0 0 10px rgba(255,255,255,.22),
+        0 0 30px rgba(255,255,255,.12),
+        0 0 70px rgba(214,181,106,.10);
+}
+
+.intro-invites {
+    display: block;
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(1.1rem, 2.2vw, 1.6rem);
+    font-weight: 500;
+    letter-spacing: .42em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    padding-left: .42em;
+    text-shadow:
+        0 0 12px rgba(214,181,106,.18),
+        0 0 30px rgba(214,181,106,.08);
+}
+
+#enter-btn {
+    margin-top: 40px;
+
+    padding: 15px 35px;
+
+    border: 1px solid
+        rgba(214,181,106,.7);
+
+    border-radius: 999px;
+
+    background:
+        rgba(255,255,255,.025);
+
+    color: var(--gold-light);
+
+    font-size: 10px;
+
+    letter-spacing: .28em;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition: all .35s ease;
+}
+
+#enter-btn:hover {
+    background: var(--gold);
+    color: var(--deep);
+
+    box-shadow:
+        0 10px 40px
+        rgba(214,181,106,.2);
+}
+
+
+
+#sparkle-container {
+    position: absolute;
+    inset: 0;
+    z-index: 8;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.reveal-spark {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 7px #fff, 0 0 16px var(--gold-light), 0 0 30px var(--gold);
+}
+
+/* =====================================================
+   CINEMATIC VINAYAKA BACKGROUND ON STARTING SCREEN
+===================================================== */
+
+.intro-vinayaka {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 7;
+
+    width: min(72vw, 720px);
+    height: min(72vw, 720px);
+
+    object-fit: contain;
+    object-position: center;
+
+    transform: translate(-50%, -50%) scale(1);
+
+    opacity: .13;
+    filter:
+        brightness(1.15)
+        saturate(.55)
+        sepia(.25)
+        contrast(1.08)
+        drop-shadow(0 0 30px rgba(240,217,149,.16));
+
+    mix-blend-mode: screen;
+
+    pointer-events: none;
+    user-select: none;
+
+    -webkit-mask-image: radial-gradient(ellipse at center, #000 34%, rgba(0,0,0,.85) 58%, transparent 84%);
+    mask-image: radial-gradient(ellipse at center, #000 34%, rgba(0,0,0,.85) 58%, transparent 84%);
+}
+
+.intro-vinayaka::selection {
+    background: transparent;
+}
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    background:
+        linear-gradient(
+            rgba(3,11,23,.35),
+            rgba(3,11,23,.88)
+        ),
+        url("images/bg2.png")
+        center / cover
+        no-repeat;
+}
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            transparent 15%,
+            rgba(3,11,23,.8) 90%
+        );
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+
+    text-align: center;
+
+    padding: 40px 20px;
+}
+
+.hero-small {
+    color: var(--gold-light);
+
+    font-size: 10px;
+
+    letter-spacing: .35em;
+
+    text-transform: uppercase;
+}
+
+ .hero-title {
+    margin-top: 28px;
+
+    font-family: "Noto Serif Telugu", serif;
+    font-weight: 700;
+    font-style: normal;
+
+    font-size:
+        clamp(3.2rem, 8vw, 7.6rem);
+
+    line-height: 1.15;
+    letter-spacing: .01em;
+
+    color: #ffffff;
+    background: linear-gradient(
+        180deg,
+        #ffffff 0%,
+        #f8f8f8 38%,
+        #e9e9e9 72%,
+        #ffffff 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    text-shadow:
+        0 1px 0 rgba(255,255,255,.95),
+        0 3px 8px rgba(0,0,0,.32),
+        0 0 12px rgba(255,255,255,.12);
+
+    filter:
+        drop-shadow(0 2px 1px rgba(255,255,255,.12))
+        drop-shadow(0 7px 14px rgba(0,0,0,.30));
+
+    animation: heroTextGlow 5.8s ease-in-out infinite;
+}
+
+@keyframes heroTextGlow {
+    0%, 100% {
+        filter:
+            drop-shadow(0 2px 1px rgba(255,239,170,.14))
+            drop-shadow(0 8px 16px rgba(0,0,0,.35));
+    }
+    50% {
+        filter:
+            drop-shadow(0 2px 2px rgba(255,239,170,.26))
+            drop-shadow(0 8px 18px rgba(0,0,0,.38));
+    }
+}
+
+.hero-subtitle {
+    margin-top: 35px;
+
+    color: #d4af37;
+
+    font-size: 11px;
+
+    letter-spacing: .2em;
+
+    text-transform: uppercase;
+}
+
+.hero-telugu {
+    margin-top: 22px;
+
+    color: var(--gold-light);
+
+    font-size: 20px;
+
+    font-weight: 500;
+
+    letter-spacing: .04em;
+}
+
+
+/* =====================================================
+   WELCOME
+===================================================== */
+
+.welcome-text {
+    max-width: 760px;
+    margin: auto;
+    text-align: center;
+}
+
+.welcome-telugu {
+    margin-top: 35px;
+
+    color: var(--gold-light);
+
+    font-size:
+        clamp(1.25rem, 3vw, 1.8rem);
+
+    line-height: 1.9;
+
+    font-weight: 500;
+}
+
+.welcome-description {
+    margin-top: 20px;
+
+    color: var(--muted);
+
+    font-size: 14px;
+
+    line-height: 2;
+}
+
+
+/* =====================================================
+   KARRA PUJA
+===================================================== */
+
+.karra-section {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    background:
+        radial-gradient(circle at 50% 12%, rgba(214,181,106,.13), transparent 28%),
+        linear-gradient(180deg, #fffdf8 0%, #fbf7ed 52%, #fffdf8 100%);
+    color: #182337;
+    border-top: 1px solid rgba(214,181,106,.28);
+    border-bottom: 1px solid rgba(214,181,106,.28);
+}
+
+.karra-section::before,
+.karra-section::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    width: min(720px, 72vw);
+    height: 1px;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, transparent, rgba(166,126,45,.55), transparent);
+    pointer-events: none;
+}
+
+.karra-section::before { top: 28px; }
+.karra-section::after { bottom: 28px; }
+
+.karra-section .eyebrow {
+    color: #a67e2d;
+    font-weight: 600;
+    letter-spacing: .38em;
+}
+
+.karra-title-telugu {
+    font-family: "Noto Serif Telugu", serif;
+    font-weight: 600;
+    color: #17243a;
+    letter-spacing: .01em;
+    line-height: 1.25;
+    text-shadow: 0 1px 0 rgba(255,255,255,.9);
+}
+
+.karra-section .divider {
+    background: linear-gradient(90deg, transparent, #c59b45, transparent);
+    width: 110px;
+    height: 2px;
+    position: relative;
+}
+
+.karra-section .divider::after {
+    content: "✦";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -56%);
+    padding: 0 10px;
+    color: #b48732;
+    background: #fbf7ed;
+    font-size: 11px;
+}
+
+.karra-date {
+    color: #8f6b27;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: .08em;
+}
+
+.karra-time {
+    color: #17243a;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: .16em;
+}
+
+.karra-telugu {
+    margin-top: 10px;
+    color: #8f6b27;
+    font-family: "Noto Serif Telugu", serif;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.karra-text {
+    max-width: 650px;
+    margin: 18px auto 0;
+    color: #5c6470;
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+.karra-section .container,
+.karra-section > div {
+    position: relative;
+    z-index: 1;
+}
+
+/* =====================================================
+   PREMIUM CEREMONY TIMELINE
+===================================================== */
+
+.ceremony-timeline {
+    position: relative;
+
+    max-width: 1100px;
+
+    margin: 80px auto 0;
+}
+
+
+/* CENTRAL GOLD LINE */
+
+.ceremony-timeline::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+
+    left: 50%;
+
+    width: 1px;
+
+    transform: translateX(-50%);
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            var(--gold) 6%,
+            var(--gold) 94%,
+            transparent
+        );
+}
+
+
+/* =====================================================
+   DAY CHAPTER
+===================================================== */
+
+.day-chapter {
+    position: relative;
+
+    width: 50%;
+
+    padding:
+        40px 70px 75px;
+}
+
+.day-chapter:nth-child(odd) {
+    left: 0;
+    text-align: right;
+}
+
+.day-chapter:nth-child(even) {
+    left: 50%;
+    text-align: left;
+}
+
+
+/* =====================================================
+   DAY NUMBER
+===================================================== */
+
+.day-number {
+    position: absolute;
+
+    top: 42px;
+
+    width: 48px;
+    height: 48px;
+
+    border:
+        1px solid var(--gold);
+
+    border-radius: 50%;
+
+    background: var(--deep);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--gold-light);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 18px;
+
+    box-shadow:
+        0 0 0 7px var(--deep);
+
+    z-index: 3;
+}
+
+.day-chapter:nth-child(odd)
+.day-number {
+    right: -24px;
+}
+
+.day-chapter:nth-child(even)
+.day-number {
+    left: -24px;
+}
+
+
+/* =====================================================
+   DAY HEADING
+===================================================== */
+
+.day-label {
+    color: var(--gold-light);
+
+    font-size: 9px;
+
+    letter-spacing: .35em;
+
+    text-transform: uppercase;
+}
+
+.day-date {
+    margin-top: 8px;
+    color: rgba(247,241,227,.62);
+    font-family: "Montserrat", sans-serif;
+    font-size: 11px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+}
+
+.day-title {
+    margin-top: 12px;
+
+    color: var(--ivory);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(2.5rem, 5vw, 4rem);
+
+    line-height: .95;
+}
+
+.day-telugu {
+    margin-top: 12px;
+
+    color: var(--gold-light);
+
+    font-family:
+        "Noto Serif Telugu",
+        serif;
+
+    font-size: 18px;
+
+    font-weight: 500;
+
+    line-height: 1.8;
+}
+
+.day-description {
+    margin-top: 18px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    line-height: 1.9;
+}
+
+
+/* =====================================================
+   CEREMONY FLOW
+===================================================== */
+
+.ceremony-flow {
+    margin-top: 32px;
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+/* =====================================================
+   EVENT ROW
+===================================================== */
+
+.ceremony-event {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns:
+        105px 1fr;
+
+    align-items: center;
+
+    min-height: 68px;
+}
+
+
+/* =====================================================
+   TIME
+===================================================== */
+
+.event-time {
+    color: var(--gold);
+
+    min-width: 92px;
+
+    font-size: 10px;
+
+    letter-spacing: .12em;
+
+    text-transform: uppercase;
+
+    font-weight: 600;
+}
+
+
+/* =====================================================
+   EVENT CONTENT
+===================================================== */
+
+.event-content {
+    position: relative;
+
+    padding:
+        11px 0 11px 22px;
+}
+
+
+/* EVENT GOLD DOT */
+
+.event-content::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    top: 50%;
+
+    width: 7px;
+    height: 7px;
+
+    transform:
+        translate(-50%, -50%);
+
+    border:
+        1px solid var(--gold);
+
+    border-radius: 50%;
+
+    background: var(--deep);
+}
+
+
+/* CONNECTING LINE */
+
+.event-content::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    top: 100%;
+
+    width: 1px;
+
+    height: 22px;
+
+    background:
+        rgba(214,181,106,.28);
+}
+
+
+/* LAST EVENT */
+
+.ceremony-event:last-child
+.event-content::after {
+    display: none;
+}
+
+
+/* =====================================================
+   EVENT NAME
+===================================================== */
+
+.event-name {
+    color: var(--ivory);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 21px;
+
+    line-height: 1.1;
+}
+
+.event-telugu {
+    margin-top: 2px;
+
+    color:
+        rgba(255,255,255,.92);
+
+    font-family:
+        "Noto Serif Telugu",
+        serif;
+
+    font-size: 20px;
+
+    font-weight: 500;
+
+    line-height: 1.55;
+}
+
+
+/* RIGHT ALIGNMENT */
+
+.day-chapter:nth-child(odd)
+.ceremony-event {
+    grid-template-columns:
+        1fr 105px;
+}
+
+.day-chapter:nth-child(odd)
+.event-time {
+    grid-column: 2;
+    grid-row: 1;
+
+    text-align: left;
+}
+
+.day-chapter:nth-child(odd)
+.event-content {
+    grid-column: 1;
+    grid-row: 1;
+
+    padding:
+        11px 22px 11px 0;
+}
+
+.day-chapter:nth-child(odd)
+.event-content::before {
+    left: auto;
+    right: 0;
+
+    transform:
+        translate(50%, -50%);
+}
+
+.day-chapter:nth-child(odd)
+.event-content::after {
+    left: auto;
+    right: 0;
+}
+
+
+/* =====================================================
+   DIVINE FEATURE
+===================================================== */
+
+.divine-image {
+    position: relative;
+
+    max-width: 700px;
+
+    margin: auto;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(214,181,106,.35);
+
+    box-shadow:
+        0 30px 100px
+        rgba(0,0,0,.45);
+}
+
+.divine-image img {
+    width: 100%;
+
+    aspect-ratio: 16 / 10;
+
+    object-fit: cover;
+}
+
+.divine-image::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(3,11,23,.75),
+            transparent 55%
+        );
+}
+
+.divine-caption {
+    position: relative;
+
+    z-index: 2;
+
+    text-align: center;
+
+    margin-top: -55px;
+}
+
+.divine-caption h3 {
+    color: var(--gold-light);
+
+    font-size:
+        clamp(3rem, 8vw, 5.5rem);
+}
+
+.divine-caption p {
+    margin-top: 5px;
+
+    font-size: 18px;
+
+    color: var(--gold-light);
+}
+
+.divine-moriya {
+    display: inline-block;
+    font-family: "Noto Serif Telugu", serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 600;
+    white-space: nowrap;
+    color: var(--gold-light);
+}
+
+.final-telugu {
+    font-family: "Noto Serif Telugu", serif;
+    font-size: clamp(2rem, 4.5vw, 3.25rem);
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+
+/* =====================================================
+   OUR VINAYAKAS
+===================================================== */
+
+.idol-card {
+    text-align: center;
+}
+
+.idol-photo {
+    aspect-ratio: 1 / 1;
+
+    overflow: hidden;
+
+    background: var(--deep);
+
+    border:
+        1px solid
+        rgba(214,181,106,.35);
+}
+
+.idol-photo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition:
+        transform .8s ease;
+}
+
+.idol-card:hover
+.idol-photo img {
+    transform: scale(1.04);
+}
+
+.idol-year {
+    margin-top: 22px;
+
+    color: var(--gold-light);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 34px;
+}
+
+.idol-label {
+    margin-top: 5px;
+
+    color: var(--muted);
+
+    font-size: 9px;
+
+    letter-spacing: .25em;
+
+    text-transform: uppercase;
+}
+
+
+/* =====================================================
+   MEMORIES
+===================================================== */
+
+.memory-wrapper {
+    max-width: 1050px;
+
+    margin: 50px auto 0;
+}
+
+.memory-window {
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio: 16 / 9;
+
+    overflow: hidden;
+
+    background: var(--deep);
+
+    border:
+        1px solid
+        rgba(214,181,106,.35);
+
+    box-shadow:
+        0 25px 80px
+        rgba(0,0,0,.4);
+
+    touch-action: pan-y;
+}
+
+.memory-slide {
+    position: absolute;
+
+    inset: 0;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform: scale(1.02);
+
+    transition:
+        opacity .45s ease,
+        transform .7s ease,
+        visibility .45s ease;
+}
+
+.memory-slide.active {
+    opacity: 1;
+
+    visibility: visible;
+
+    transform: scale(1);
+}
+
+.memory-slide img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.memory-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(3,11,23,.6),
+            transparent 50%
+        );
+}
+
+
+/* =====================================================
+   MEMORY NAVIGATION
+===================================================== */
+
+.memory-navigation {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 25px;
+
+    margin-top: 25px;
+}
+
+.memory-nav-btn {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid
+        rgba(214,181,106,.55);
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.02);
+
+    color: var(--gold-light);
+
+    cursor: pointer;
+
+    transition:
+        all .3s ease;
+}
+
+.memory-nav-btn:hover {
+    background: var(--gold);
+
+    color: var(--deep);
+
+    transform: scale(1.05);
+}
+
+.memory-counter {
+    min-width: 70px;
+
+    text-align: center;
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    letter-spacing: .18em;
+}
+
+.memory-dots {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-top: 17px;
+}
+
+.memory-dot {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid var(--gold);
+
+    background: transparent;
+
+    cursor: pointer;
+
+    transition: all .3s ease;
+}
+
+.memory-dot.active {
+    background: var(--gold);
+
+    transform: scale(1.35);
+}
+
+
+/* =====================================================
+   HOSTED
+===================================================== */
+
+.hosted {
+    text-align: center;
+}
+
+.hosted-title {
+    margin-top: 15px;
+
+    color: var(--gold-light);
+
+    font-size:
+        clamp(4rem, 10vw, 8rem);
+
+    line-height: 1;
+}
+
+.hosted-telugu {
+    margin-top: 15px;
+
+    color: var(--ivory);
+
+    font-size: 20px;
+
+    font-weight: 500;
+}
+
+
+/* =====================================================
+   COMMITTEE
+===================================================== */
+
+.committee-banner {
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio: 16 / 9;
+
+    overflow: hidden;
+
+    background: var(--deep);
+
+    border:
+        1px solid
+        rgba(214,181,106,.35);
+
+    box-shadow:
+        0 25px 80px
+        rgba(0,0,0,.4);
+}
+
+.committee-banner img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.committee-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(3,11,23,.35),
+            transparent 55%
+        );
+}
+
+
+/* =====================================================
+   VENUE
+===================================================== */
+
+.venue {
+    text-align: center;
+}
+
+.venue-name {
+    color: var(--gold-light);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(2.2rem, 5vw, 4rem);
+}
+
+.venue-address {
+    margin-top: 20px;
+
+    color: var(--gold-light);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: clamp(1.8rem, 3.8vw, 3rem);
+
+    font-weight: 500;
+
+    line-height: 1.25;
+
+    letter-spacing: .04em;
+
+    text-shadow: 0 0 14px rgba(255,255,255,.08);
+}
+
+.map-wrapper {
+    max-width: 1000px;
+
+    margin: 45px auto 0;
+
+    aspect-ratio: 16 / 8;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(214,181,106,.35);
+}
+
+.map-wrapper iframe {
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+
+    filter:
+        grayscale(.65)
+        contrast(1.05);
+}
+
+.gold-button {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-top: 30px;
+
+    padding: 14px 26px;
+
+    border:
+        1px solid var(--gold);
+
+    color: var(--gold-light);
+
+    font-size: 10px;
+
+    letter-spacing: .2em;
+
+    text-transform: uppercase;
+
+    transition:
+        all .3s ease;
+}
+
+.gold-button:hover {
+    background: var(--gold);
+
+    color: var(--deep);
+}
+
+
+/* =====================================================
+   FINAL
+===================================================== */
+
+.final-section {
+    min-height: 75vh;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 70px 20px;
+
+    background:
+        linear-gradient(
+            rgba(3,11,23,.55),
+            rgba(3,11,23,.9)
+        ),
+        url("images/bg3.png")
+        center / cover
+        no-repeat;
+}
+
+.final-title {
+    margin-top: 10px;
+    color: #ffffff;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: clamp(3.2rem, 8vw, 6.8rem);
+    line-height: 1.05;
+    letter-spacing: .02em;
+    text-shadow: 0 0 10px rgba(255,255,255,.10);
+}
+
+.final-telugu {
+    margin-top: 16px;
+    color: var(--gold-light);
+    font-family: "Noto Serif Telugu", serif;
+    font-size: clamp(1.15rem, 2.4vw, 1.55rem);
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.final-text {
+    margin: 22px auto 0;
+    max-width: 560px;
+    color: rgba(247,241,227,.82);
+    font-family: "Montserrat", sans-serif;
+    font-size: 13px;
+    line-height: 1.9;
+    letter-spacing: .01em;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+    padding: 40px 20px;
+
+    text-align: center;
+
+    background: var(--deep);
+
+    border-top:
+        1px solid
+        rgba(214,181,106,.12);
+}
+
+.footer-name {
+    color: var(--gold-light);
+
+    font-family:
+        "Great Vibes",
+        cursive;
+
+    font-size: 38px;
+}
+
+.footer-text {
+    margin-top: 8px;
+
+    color: var(--muted);
+
+    font-size: 9px;
+
+    letter-spacing: .2em;
+
+    text-transform: uppercase;
+}
+
+
+/* =====================================================
+   PARTICLES
+===================================================== */
+
+.particle {
+    position: fixed;
+
+    width: 2px;
+    height: 2px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(240,217,149,.45);
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 640px) {
+
+    .intro-vinayaka {
+        width: 110vw;
+        height: 110vw;
+        opacity: .11;
+    }
+
+
+
+    /* INTRO */
+
+    .intro-title {
+        padding: 0 15px;
+        gap: 6px;
+    }
+
+    .intro-brand {
+        font-size: clamp(2.9rem, 16vw, 4.8rem);
+        font-family: "Cormorant Garamond", serif;
+        font-style: normal;
+        font-weight: 600;
+    }
+
+    .intro-invites {
+        font-size: clamp(.9rem, 4.2vw, 1.2rem);
+        letter-spacing: .3em;
+    }
+
+    #enter-btn {
+        padding: 14px 25px;
+
+        font-size: 9px;
+
+        letter-spacing: .2em;
+    }
+
+
+    /* HERO */
+
+    .hero {
+        min-height: 100svh;
+    }
+
+    .hero-content {
+        padding: 35px 18px;
+    }
+
+    .hero-small {
+        font-size: 8px;
+
+        letter-spacing: .25em;
+    }
+
+    .hero-title {
+        font-family: "Noto Serif Telugu", serif;
+        font-size:
+            clamp(2rem, 10vw, 3.6rem);
+        line-height: 1.3;
+    }
+
+    .hero-subtitle {
+        font-size: 8px;
+
+        line-height: 1.8;
+
+        letter-spacing: .12em;
+    }
+
+    .hero-telugu {
+        font-size: 17px;
+    }
+
+    .karra-section::before { top: 18px; width: 78vw; }
+    .karra-section::after { bottom: 18px; width: 78vw; }
+    .karra-date { font-size: 24px; }
+    .karra-time { font-size: 20px; }
+    .karra-telugu { font-size: 17px; }
+
+
+    /* TITLES */
+
+    .section-title {
+        font-size:
+            clamp(2.8rem, 13vw, 4rem);
+    }
+
+    .welcome-title {
+        font-size: clamp(1.65rem, 7.2vw, 2.4rem);
+        white-space: nowrap;
+        letter-spacing: .015em;
+    }
+
+
+    /* WELCOME */
+
+    .welcome-description {
+        font-size: 12px;
+
+        line-height: 1.9;
+    }
+
+    .welcome-telugu {
+        font-size: 19px;
+    }
+
+
+    /* =================================================
+       MOBILE CEREMONY TIMELINE
+    ================================================= */
+
+    .ceremony-timeline {
+        margin-top: 45px;
+
+        padding-left: 45px;
+    }
+
+    .ceremony-timeline::before {
+        left: 15px;
+
+        transform: none;
+    }
+
+
+    .day-chapter,
+    .day-chapter:nth-child(odd),
+    .day-chapter:nth-child(even) {
+
+        width: 100%;
+
+        left: 0;
+
+        text-align: left;
+
+        padding:
+            30px 0 55px;
+    }
+
+
+    .day-number,
+    .day-chapter:nth-child(odd)
+    .day-number,
+    .day-chapter:nth-child(even)
+    .day-number {
+
+        left: -51px;
+
+        right: auto;
+
+        top: 31px;
+
+        width: 42px;
+        height: 42px;
+
+        font-size: 16px;
+    }
+
+
+    .day-date {
+        font-size: 9px;
+        letter-spacing: .12em;
+    }
+
+    .day-title {
+        font-size:
+            clamp(2.3rem, 11vw, 3.2rem);
+    }
+
+    .day-telugu {
+        font-size: 17px;
+
+        line-height: 1.9;
+    }
+
+    .day-description {
+        font-size: 11px;
+
+        line-height: 1.9;
+    }
+
+
+    /* =================================================
+       MOBILE EVENT FLOW
+    ================================================= */
+
+    .ceremony-event,
+    .day-chapter:nth-child(odd)
+    .ceremony-event {
+
+        display: grid;
+
+        grid-template-columns:
+            85px 1fr;
+
+        min-height: 68px;
+    }
+
+
+    .event-date {
+        font-size: 7px;
+        letter-spacing: .06em;
+    }
+
+    .event-time,
+    .day-chapter:nth-child(odd)
+    .event-time {
+
+        grid-column: 1;
+
+        grid-row: 1;
+
+        text-align: left;
+
+        font-size: 8px;
+    }
+
+
+    .event-content,
+    .day-chapter:nth-child(odd)
+    .event-content {
+
+        grid-column: 2;
+
+        grid-row: 1;
+
+        padding:
+            11px 0 11px 20px;
+    }
+
+
+    .event-content::before,
+    .day-chapter:nth-child(odd)
+    .event-content::before {
+
+        left: 0;
+
+        right: auto;
+
+        transform:
+            translate(-50%, -50%);
+    }
+
+
+    .event-content::after,
+    .day-chapter:nth-child(odd)
+    .event-content::after {
+
+        left: 0;
+
+        right: auto;
+    }
+
+
+    .event-name {
+        font-size: 14px;
+        line-height: 1.3;
+    }
+
+    .event-telugu {
+        font-size: 18px;
+        line-height: 1.6;
+    }
+
+
+    /* DIVINE */
+
+    .divine-image img {
+        aspect-ratio: 4 / 3;
+    }
+
+    .divine-caption h3 {
+        font-size: 3.5rem;
+    }
+
+
+    /* IDOLS */
+
+    .idol-year {
+        font-size: 30px;
+    }
+
+
+    /* MEMORIES */
+
+    .memory-wrapper {
+        margin-top: 35px;
+    }
+
+    .memory-window {
+        aspect-ratio: 16 / 9;
+    }
+
+    .memory-navigation {
+        gap: 18px;
+    }
+
+    .memory-nav-btn {
+        width: 38px;
+        height: 38px;
+    }
+
+
+    /* HOSTED */
+
+    .hosted-title {
+        font-size:
+            clamp(4rem, 19vw, 6rem);
+    }
+
+    .hosted-telugu {
+        font-size: 17px;
+    }
+
+
+    /* COMMITTEE */
+
+    .committee-banner {
+        aspect-ratio: 16 / 9;
+    }
+
+
+    /* MAP */
+
+    .map-wrapper {
+        aspect-ratio: 4 / 3;
+    }
+
+    .venue-address {
+        font-size: clamp(1.65rem, 7vw, 2.2rem);
+    }
+
+
+    /* FINAL */
+
+    .final-section {
+        min-height: 65vh;
+    }
+
+    .final-title {
+        font-size: clamp(3rem, 15vw, 5rem);
+    }
+
+    .final-text {
+        font-size: 11px;
+    }
+
+    .final-telugu {
+        font-size: 18px;
+    }
+
+}
+
+
+/* =====================================================
+   VERY SMALL PHONES
+===================================================== */
+
+@media (max-width: 380px) {
+
+    .intro-title {
+        gap: 5px;
+    }
+
+    .intro-brand {
+        font-size: 2.85rem;
+        font-family: "Cormorant Garamond", serif;
+        font-style: normal;
+        font-weight: 600;
+    }
+
+    .intro-invites {
+        font-size: .82rem;
+        letter-spacing: .26em;
+    }
+
+    .hero-title {
+        font-family: "Noto Serif Telugu", serif;
+        font-size: 3.2rem;
+    }
+
+    .ceremony-timeline {
+        padding-left: 40px;
+    }
+
+    .ceremony-timeline::before {
+        left: 13px;
+    }
+
+    .day-number,
+    .day-chapter:nth-child(odd)
+    .day-number,
+    .day-chapter:nth-child(even)
+    .day-number {
+
+        left: -45px;
+
+        width: 38px;
+        height: 38px;
+    }
+
+    .ceremony-event,
+    .day-chapter:nth-child(odd)
+    .ceremony-event {
+
+        grid-template-columns:
+            75px 1fr;
+    }
+
+    .event-name {
+        font-size: 18px;
+    }
+
+}
+
+
+/* Idol image placeholders: text stays visible until the photos are replaced. */
+.idol-placeholder {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    min-height: 280px;
+}
+.idol-placeholder-text {
+    display: none;
+    padding: 24px;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    opacity: .82;
+}
+.idol-placeholder.show-placeholder .idol-placeholder-text {
+    display: block;
+}
+
+
+        .karra-time {
+            margin-top: 0.35rem;
+            font-family: "Montserrat", sans-serif;
+            font-size: 0.95rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--gold, #d4af37);
+        }
+
+
+/* =====================================================
+   VIDEO MEMORIES
+===================================================== */
+.video-section-intro {
+    text-align: center;
+}
+
+.video-grid {
+    max-width: 1100px;
+    margin: 50px auto 0;
+    display: grid;
+    grid-template-columns: minmax(0, 700px);
+    justify-content: center;
+    gap: 30px;
+}
+
+.video-card {
+    position: relative;
+    overflow: hidden;
+    background: var(--deep);
+    border: 1px solid rgba(214,181,106,.35);
+    box-shadow: 0 25px 80px rgba(0,0,0,.4);
+}
+
+.video-frame {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    background: #020812;
+    overflow: hidden;
+}
+
+.video-frame video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    background: #020812;
+}
+
+.video-play-btn { display: none; }
+
+.video-controls {
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 10px 12px;
+    border-top: 1px solid rgba(240,217,149,.22);
+    border-radius: 0;
+    background: rgba(3,11,23,.96);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 8px 25px rgba(0,0,0,.25);
+}
+.video-control-btn {
+    width: 32px;
+    height: 32px;
+    flex: 0 0 32px;
+    border: 1px solid rgba(240,217,149,.25);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--gold-light);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background .25s ease, transform .25s ease;
+}
+.video-control-btn:hover {
+    background: rgba(214,181,106,.18);
+    transform: scale(1.06);
+}
+.video-control-btn i { font-size: 12px; }
+.video-progress {
+    flex: 1;
+    min-width: 60px;
+    height: 3px;
+    accent-color: var(--gold);
+    cursor: pointer;
+}
+@media (max-width: 640px) {
+    .video-controls { gap: 4px; padding: 8px 9px; }
+    .video-control-btn { width: 28px; height: 28px; flex-basis: 28px; }
+}
+
+.video-caption {
+    padding: 18px 20px 20px;
+    text-align: center;
+}
+
+.video-caption-title {
+    color: var(--ivory);
+    font-family: "Cormorant Garamond", serif;
+    font-size: 24px;
+}
+
+.video-caption-telugu {
+    margin-top: 4px;
+    color: var(--gold-light);
+    font-family: "Noto Serif Telugu", serif;
+    font-size: 16px;
+}
+
+
+
+@media (max-width: 700px) {
+    .video-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 24px;
+        margin-top: 35px;
+    }
+
+    .video-play-btn {
+        width: 62px;
+        height: 62px;
+    }
+
+    .video-caption-title {
+        font-size: 21px;
+    }
+}
+
+
+/* =====================================================
+   FUN ACTIVITIES
+===================================================== */
+.fun-activities-section {
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(214,181,106,.16), transparent 34%),
+        radial-gradient(circle at 8% 85%, rgba(214,181,106,.08), transparent 28%),
+        radial-gradient(circle at 92% 85%, rgba(214,181,106,.08), transparent 28%),
+        linear-gradient(180deg, #fffdf8 0%, #f9f5eb 52%, #fffdf9 100%);
+    color: #142238;
+}
+
+.fun-activities-section::before,
+.fun-activities-section::after {
+    content: \"\";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(78%, 900px);
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(183,145,67,.55), transparent);
+    pointer-events: none;
+}
+
+.fun-activities-section::before { top: 42px; }
+.fun-activities-section::after { bottom: 42px; }
+
+.fun-activities-section .eyebrow {
+    color: #9b7428;
+}
+
+.fun-activities-section .section-title {
+    color: #12233b;
+    text-shadow: 0 1px 0 rgba(255,255,255,.9);
+}
+
+.fun-activities-section .divider {
+    background: #b99143;
+}
+
+.fun-activities-intro {
+    text-align: center;
+}
+
+.fun-activities-date {
+    margin-top: 18px;
+    color: #9b7428;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 22px;
+    letter-spacing: .08em;
+}
+
+.fun-games {
+    max-width: 850px;
+    margin: 48px auto 0;
+    border-top: 1px solid rgba(183,145,67,.38);
+}
+
+.fun-game {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    align-items: center;
+    min-height: 78px;
+    padding: 14px 8px;
+    border-bottom: 1px solid rgba(183,145,67,.22);
+}
+
+.fun-game-time {
+    color: #9b7428;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+}
+
+.fun-game-name {
+    color: #12233b;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 25px;
+    line-height: 1.1;
+}
+
+.fun-game-telugu {
+    margin-top: 4px;
+    color: #4d5663;
+    font-family: "Noto Serif Telugu", serif;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+@media (max-width: 640px) {
+    .fun-activities-date { font-size: 20px; }
+    .fun-games { margin-top: 35px; }
+    .fun-game {
+        grid-template-columns: 95px 1fr;
+        min-height: 72px;
+        padding: 12px 2px;
+    }
+    .fun-game-time {
+        font-size: 8px;
+        letter-spacing: .08em;
+    }
+    .fun-game-name { font-size: 20px; }
+    .fun-game-telugu { font-size: 16px; }
+}
+
+
+
+/* =====================================================
+   LAST YEAR WINNERS
+===================================================== */
+.winners-section {
+    background:
+        radial-gradient(circle at 50% 0%, rgba(214,181,106,.08), transparent 38%),
+        var(--navy);
+}
+
+.winners-intro {
+    text-align: center;
+}
+
+.winners-grid {
+    max-width: 1050px;
+    margin: 50px auto 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px;
+}
+
+.winner-card {
+    overflow: hidden;
+    background: rgba(2,8,18,.72);
+    border: 1px solid rgba(214,181,106,.35);
+    box-shadow: 0 25px 80px rgba(0,0,0,.38);
+    transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+}
+
+.winner-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(240,217,149,.65);
+    box-shadow: 0 30px 90px rgba(0,0,0,.48);
+}
+
+.winner-photo {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: var(--deep);
+}
+
+.winner-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .7s ease;
+}
+
+.winner-card:hover .winner-photo img {
+    transform: scale(1.035);
+}
+
+.winner-info {
+    padding: 22px 22px 25px;
+    text-align: center;
+}
+
+.winner-category {
+    color: var(--gold);
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+}
+
+.winner-name {
+    margin-top: 8px;
+    color: var(--ivory);
+    font-family: "Cormorant Garamond", serif;
+    font-size: 30px;
+    line-height: 1.1;
+}
+
+.winner-telugu {
+    margin-top: 4px;
+    color: var(--gold-light);
+    font-family: "Noto Serif Telugu", serif;
+    font-size: 15px;
+}
+
+.winner-medal {
+    margin-top: 10px;
+    color: var(--gold-light);
+    font-size: 13px;
+}
+
+@media (max-width: 700px) {
+    .winners-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        margin-top: 35px;
+    }
+
+    .winner-name {
+        font-size: 27px;
+    }
+
+    .winner-info {
+        padding: 18px 16px 21px;
+    }
+}
+
+
+
+/* =====================================================
+   HERO SCROLL DOWN INDICATOR
+===================================================== */
+.scroll-down {
+    position: absolute;
+    bottom: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--gold-light);
+    font-family: "Montserrat", sans-serif;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    opacity: .9;
+    z-index: 5;
+    cursor: pointer;
+    animation: scrollBounce 2s ease-in-out infinite;
+    transition: opacity .3s ease;
+}
+
+.scroll-down:hover {
+    opacity: 1;
+}
+
+.scroll-down i {
+    font-size: 12px;
+}
+
+@keyframes scrollBounce {
+    0%, 100% {
+        transform: translate(-50%, 0);
+    }
+    50% {
+        transform: translate(-50%, 8px);
+    }
+}
+
+@media (max-width: 700px) {
+    .scroll-down {
+        bottom: 24px;
+        font-size: 8px;
+        letter-spacing: .22em;
+    }
+
+    .scroll-down i {
+        font-size: 11px;
+    }
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     STARTING SCREEN
+     ONLY THESE TWO TEXTS
+===================================================== -->
+
+<div id="intro">
+
+    <div class="intro-glow"></div>
+
+    <img
+        id="intro-vinayaka"
+        class="intro-vinayaka"
+        src="images/ganesha-main.jpg"
+        alt=""
+        aria-hidden="true">
+
+    <div id="sparkle-container"></div>
+
+    <div id="curtain-left"
+         class="curtain">
+    </div>
+
+    <div id="curtain-right"
+         class="curtain">
+    </div>
+
+
+    <div id="intro-content">
+
+        <h1 class="cinematic intro-title">
+            <span class="intro-brand">Sri Ram Youth</span>
+            <span class="intro-invites">Invites You</span>
+        </h1>
+
+        <button id="enter-btn">
+            Open For Celebration
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     AUDIO
+===================================================== -->
+
+<audio id="bg-audio"
+       loop
+       preload="auto">
+
+    <source
+        src="audio.mpeg"
+        type="audio/mpeg">
+
+</audio>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <p class="hero-small">
+            Sri Ram Youth Presents
+        </p>
+
+
+        <h1 class="display hero-title">
+            వినాయక చవితి సంబరాలు
+        </h1>
+
+
+        <p class="hero-subtitle">
+            Three Days Of Devotion · Tradition · Celebration
+        </p>
+
+
+    </div>
+
+    <div class="scroll-down" onclick="document.querySelector('.welcome-section')?.scrollIntoView({ behavior: 'smooth' })">
+        <span>Scroll Down</span>
+        <i class="fa-solid fa-chevron-down"></i>
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     WELCOME
+===================================================== -->
+
+<section class="section-dark py-24 md:py-36">
+
+    <div class="max-w-5xl mx-auto px-6">
+
+        <div class="welcome-text">
+
+            <p class="eyebrow">
+                You Are Invited
+            </p>
+
+
+            <h2 class="display section-title welcome-title">
+                For Festival Of Joy
+            </h2>
+
+
+            <div class="divider"></div>
+
+
+            <p class="telugu welcome-telugu">
+                శ్రీ వినాయక చవితి మహోత్సవానికి
+                సాదర ఆహ్వానం
+            </p>
+
+
+            <p class="welcome-description">
+
+                శ్రీరామ్ యూత్ ఆధ్వర్యంలో జరిగే వినాయక చవితి వేడుకలకు మీ అందరినీ ప్రేమతో ఆహ్వానిస్తున్నాము...!!
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     KARra PUJA
+===================================================== -->
+
+<section class="section-dark py-20 md:py-28 karra-section">
+
+    <div class="max-w-5xl mx-auto px-6 text-center">
+
+        <p class="eyebrow">
+            Special Beginning
+        </p>
+
+        <h2 class="display section-title karra-title-telugu">
+            కర్ర పూజ
+        </h2>
+
+        <div class="divider"></div>
+
+        <p class="karra-date">
+            12 September 2026
+        </p>
+
+        <p class="karra-time">
+            09:00 AM
+        </p>
+
+
+        <p class="karra-text">
+            వినాయక చవితి వేడుకలను భక్తితో, ఆనందంగా ప్రారంభిద్దాం
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     THREE DAY CEREMONY
+===================================================== -->
+
+<section class="section-deep py-24 md:py-36">
+
+    <div class="max-w-6xl mx-auto px-6">
+
+
+        <div class="text-center">
+
+            <p class="eyebrow">
+                The Celebration
+            </p>
+
+
+            <h2 class="display section-title">
+                Three Days Of Grace
+            </h2>
+
+
+            <div class="divider"></div>
+
+        </div>
+
+
+        <div class="ceremony-timeline">
+
+            <!-- DAY ONE -->
+            <div class="day-chapter">
+
+                <div class="day-number">01</div>
+
+                <p class="day-label">BEGINNING</p>
+                <p class="day-date">14 September 2026</p>
+
+                <h3 class="day-title">ఆరంభం</h3>
+
+                <p class="telugu day-telugu">పూజ & స్వామివారి ప్రసాదం</p>
+
+                <p class="day-description">
+                   Beginning the celebrations with devotion and joy
+                </p>
+
+                <div class="ceremony-flow">
+
+                    <div class="ceremony-event">
+                        <div class="event-time">09:00 AM</div>
+                        <div class="event-content">
+                            <div class="telugu event-telugu">పూజ</div>
+                            <div class="event-name">Pooja</div>
+                        </div>
+                    </div>
+
+                    <div class="ceremony-event">
+                        <div class="event-time">After Pooja</div>
+                        <div class="event-content">
+                            <div class="telugu event-telugu">స్వామివారి ప్రసాదం</div>
+                            <div class="event-name">Swamy Vari Prasadham</div>
+                        </div>
+                    </div>
+
+                    <div class="ceremony-event">
+                        <div class="event-time">03:00 PM</div>
+                        <div class="event-content">
+                            <div class="telugu event-telugu">ముగ్గుల పోటీ — మహిళలకు</div>
+                            <div class="event-name">Muggula Poti — Ladies</div>
+                        </div>
+                    </div>
+
+                    <div class="ceremony-event">
+                        <div class="event-time"> 7 7:00 PM</div>
+                        <div class="event-content">
+                            <div class="telugu event-telugu">అంత్యాక్షరి</div>
+                            <div class="event-name">Anthakshari</div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- DAY TWO -->
+            <div class="day-chapter">
+
+                <div class="day-number">02</div>
+
+                <p class="day-label">Celebration of Joy</p>
+                <p class="day-date">15 September 2026</p>
+
+                <h3 class="day-title">ఆనందోత్సవం</h3>
+
+                <p class="telugu day-telugu">పూజ, అన్నదానం & వినోద కార్యక్రమాలు</p>
+
+                <p class="day-description">
+                    A day of devotion, community togetherness,
+                    delicious Annadhanam and evening fun for everyone.
+                </p>
+
+                <div class="ceremony-flow">
+
+                    <div class="ceremony-event">
+                        <div class="event-time">10:00 AM</div>
+                        <div class="event-content">
+                            <div class="telugu event-telugu">ఉదయం పూజ</div>
+                            <div class="event-name">Morning Pooja</div>
+                        </div>
+                    </div>
+
+                    <div class="ceremony-event">
+                        <div class="event-time">12:00 PM</div>
+                        <div class="event-content">
+                            <div class="telugu event-telugu">అన్నదానం</div>
+                            <div class="event-name">Annadhaanam</div>
+                        </div>
+                    </div>
+
+                    <div class="ceremony-event">
+                        <div class="event-time">06:00 PM</div>
+                        <div class="event-content">
+                            <div class="telugu event-telugu">సాంస్కృతిక & వినోద కార్యక్రమాలు</div>
+                            <div class="event-name">Cultural & Fun Activities</div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- DAY THREE -->
+            <div class="day-chapter">
+
+                <div class="day-number">03</div>
+
+                <p class="day-label">Immersion</p>
+                <p class="day-date">16 September 2026</p>
+
+                <h3 class="day-title">విసర్జనం</h3>
+
+                <p class="telugu day-telugu">ఆటలు, నిమజ్జనం & ఊరేగింపు</p>
+
+                <p class="day-description">
+                    A lively finale with traditional celebrations,
+                    fun-filled games, musical moments and the grand farewell to Lord Ganesha.
+                </p>
+
+                <div class="ceremony-flow">
+
+                    <div class="ceremony-event">
+                        <div class="event-time">10:00 AM</div>
+                        <div class="event-content">
+                            <div class="telugu event-telugu">ఉదయం పూజ</div>
+                            <div class="event-name">Morning Pooja</div>
+                        </div>
+                    </div>
+
+                    <div class="ceremony-event">
+                        <div class="event-time">03:00 PM</div>
+                        <div class="event-content">
+                            <div class="telugu event-telugu">లడ్డూ పాట</div>
+                            <div class="event-name">Laddu Paata</div>
+                        </div>
+                    </div>
+
+                    <div class="ceremony-event">
+                        <div class="event-time">04:00 PM</div>
+                        <div class="event-content">
+                            <div class="telugu event-telugu">ఉట్టి కొట్టడం</div>
+                            <div class="event-name">Ootti Kottadam</div>
+                        </div>
+                    </div>
+
+                    <div class="ceremony-event">
+                        <div class="event-time">Next</div>
+                        <div class="event-content">
+                            <div class="telugu event-telugu">వినోద పోటీలు</div>
+                            <div class="event-name">Fun Competitions</div>
+                        </div>
+                    </div>
+
+                    <div class="ceremony-event">
+                        <div class="event-time">05:30 PM</div>
+                        <div class="event-content">
+                            <div class="telugu event-telugu">గణేష్ నిమజ్జనం & ఊరేగింపు</div>
+                            <div class="event-name">Ganesh Nimmajanam & Ooreguimpu</div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+     FUN ACTIVITIES — DAY TWO
+===================================================== -->
+<section class="section-deep py-24 md:py-36 fun-activities-section">
+    <div class="max-w-5xl mx-auto px-6">
+
+        <div class="fun-activities-intro">
+            <p class="eyebrow">Day Two · Fun Activities</p>
+
+            <h2 class="display section-title">Fun Activities</h2>
+
+            <div class="divider"></div>
+
+            <p class="fun-activities-date">15 September 2026</p>
+        </div>
+
+        <div class="fun-games">
+
+            <div class="fun-game">
+                <div class="fun-game-time">07:00 PM</div>
+                <div>
+                    <div class="fun-game-name">Aqua Heist</div>
+                   
+                </div>
+            </div>
+
+            <div class="fun-game">
+                <div class="fun-game-time">8:00 PM</div>
+                <div>
+                    <div class="fun-game-name">Jump Trap</div>
+                  
+                </div>
+            </div>
+
+            <div class="fun-game">
+                <div class="fun-game-time">8:30 PM</div>
+                <div>
+                    <div class="fun-game-name">Ballon & Cup Challenge</div>
+                
+                </div>
+            </div>
+
+            <div class="fun-game">
+                <div class="fun-game-time">09:30 PM</div>
+                <div>
+                    <div class="fun-game-name">Memory Market</div>
+                    
+                </div>
+            </div>
+
+            <div class="fun-game">
+                <div class="fun-game-time">10:30 PM</div>
+                <div>
+                    <div class="fun-game-name">Wrong Answers Only</div>
+                    
+                </div>
+            </div>
+            <div class="fun-game">
+                <div class="fun-game-time">11:00 PM</div>
+                <div>
+                    <div class="fun-game-name">Fun Time</div>
+                    
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+
+
+<!-- =====================================================
+     DIVINE GANESHA
+===================================================== -->
+
+<section class="section-dark py-24 md:py-36">
+
+    <div class="max-w-6xl mx-auto px-6">
+
+
+        <div class="text-center mb-12">
+
+            <p class="eyebrow">
+                The Divine Presence
+            </p>
+
+
+            <h3 class="display section-title">
+                Our Ganesh Is Coming
+            
+            </h3>
+            <p class="eyebrow">
+                On 13 September 2026 · 09:00 PM
+            </p>
+
+        </div>
+
+
+        <div class="divine-image">
+
+            <img
+                src="images/ganesha-main.jpeg"
+                alt="Lord Ganesha">
+
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     OUR VINAYAKAS
+===================================================== -->
+
+<section class="section-deep py-24 md:py-36">
+
+    <div class="max-w-6xl mx-auto px-6">
+
+
+        <div class="text-center mb-14">
+
+            <p class="eyebrow">
+                A Journey Of Faith
+            </p>
+
+
+            <h2 class="display section-title">
+                Our Vinayakas
+            </h2>
+
+
+            <div class="divider"></div>
+
+
+            <p class="text-sm text-gray-400 max-w-xl mx-auto leading-7">
+
+                Three years, countless blessings and memories
+                that remain close to our hearts.
+
+            </p>
+
+        </div>
+
+
+        <div class="
+            grid
+            grid-cols-1
+            sm:grid-cols-2
+            md:grid-cols-3
+            gap-8
+        ">
+
+
+            <!-- 2023 -->
+
+            <div class="idol-card">
+
+                <div class="idol-photo idol-placeholder" data-year="2023">
+
+                    <img
+                        src="images/idols/2023.png"
+                        alt="Sri Ram Youth Vinayaka 2023"
+                        loading="lazy"
+                        onerror="this.style.display='none'; this.parentElement.classList.add('show-placeholder');">
+
+                </div>
+
+
+                <h3 class="idol-year">
+                    2023
+                </h3>
+
+
+                <p class="idol-label">
+                   The Beginning
+                </p>
+
+            </div>
+
+
+            <!-- 2024 -->
+
+            <div class="idol-card">
+
+                <div class="idol-photo idol-placeholder" data-year="2024">
+
+                    <img
+                        src="images/idols/2024.png"
+                        alt="Sri Ram Youth Vinayaka 2024"
+                        loading="lazy"
+                        onerror="this.style.display='none'; this.parentElement.classList.add('show-placeholder');">
+
+                </div>
+
+
+                <h3 class="idol-year">
+                    2024
+                </h3>
+
+
+                <p class="idol-label">
+                    The Celebration
+                </p>
+
+            </div>
+
+
+            <!-- 2025 -->
+
+            <div class="idol-card" id="vinayaka-2025">
+
+                <div class="idol-photo idol-placeholder" data-year="2025">
+
+                    <img
+                        src="images/idols/2025.png"
+                        alt="Sri Ram Youth Vinayaka 2025"
+                        loading="lazy"
+                        onerror="this.style.display='none'; this.parentElement.classList.add('show-placeholder');">
+
+                </div>
+
+                <h3 class="idol-year">2025</h3>
+
+                <p class="idol-label">The Legacy</p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     LAST YEAR LADDU WINNERS
+===================================================== -->
+<section class="section-deep py-24 md:py-36 winners-section">
+    <div class="max-w-6xl mx-auto px-6">
+
+        <div class="winners-intro">
+            <p class="eyebrow">Last Year · Special Recognition</p>
+            <h2 class="display section-title">Laddu Winners</h2>
+            <div class="divider"></div>
+            <p class="text-sm text-gray-400 max-w-xl mx-auto leading-7">
+                Celebrating the winners of last year's Laddu event.
+            </p>
+        </div>
+
+        <div class="winners-grid">
+
+            <div class="winner-card">
+                <div class="winner-photo">
+                    <img src="images/winners/laddu-winner-1.jpeg"
+                         alt="Laddu Winner - Ravi Kumar"
+                         loading="lazy">
+                </div>
+                <div class="winner-info">
+                    <div class="winner-category">Laddu Winner</div>
+                    <div class="winner-name">Sudha Sudhakar Reddy</div>
+                    <div class="winner-telugu">లడ్డూ విజేత</div>
+                    <div class="winner-medal"><i class="fa-solid fa-trophy"></i> Winner · 2025</div>
+                </div>
+            </div>
+
+            <div class="winner-card">
+                <div class="winner-photo">
+                    <img src="images/winners/laddu-winner-2.jpeg"
+                         alt="Laddu Winner - Sai Kiran"
+                         loading="lazy">
+                </div>
+                <div class="winner-info">
+                    <div class="winner-category">Laddu Winner</div>
+                    <div class="winner-name">Sunkireddy Lakshmi Reddy</div>
+                    <div class="winner-telugu">లడ్డూ విజేత</div>
+                    <div class="winner-medal"><i class="fa-solid fa-trophy"></i> Winner · 2025</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- =====================================================
+     LAST YEAR MUSICAL CHAIRS WINNERS
+===================================================== -->
+<section class="section-dark py-24 md:py-36 winners-section">
+    <div class="max-w-6xl mx-auto px-6">
+
+        <div class="winners-intro">
+            <p class="eyebrow">Last Year · Fun Activities</p>
+            <h2 class="display section-title">Musical Chairs Winners</h2>
+            <div class="divider"></div>
+            <p class="text-sm text-gray-400 max-w-xl mx-auto leading-7">
+                A special moment celebrating last year's Musical Chairs winners.
+            </p>
+        </div>
+
+        <div class="winners-grid">
+
+            <div class="winner-card">
+                <div class="winner-photo">
+                    <img src="images/winners/musical-chair-winner-1.jpeg"
+                         alt="Musical Chairs Winner - Harsha Vardhan"
+                         loading="lazy">
+                </div>
+                <div class="winner-info">
+                    <div class="winner-category">Musical Chairs Winners</div>
+                    <div class="winner-name">Banka Meghana & Ramireddy Pavithra</div>
+                    <div class="winner-telugu">మ్యూజికల్ చైర్స్ విజేత</div>
+                    <div class="winner-medal"><i class="fa-solid fa-trophy"></i> Winner · 2025</div>
+                </div>
+            </div>
+
+            <div class="winner-card">
+                <div class="winner-photo">
+                    <img src="images/winners/musical-chair-winner-2.jpeg"
+                         alt="Musical Chairs Winner - Vamsi Krishna"
+                         loading="lazy">
+                </div>
+                <div class="winner-info">
+                    <div class="winner-category">Musical Chairs Winner</div>
+                    <div class="winner-name">Ramireddy Jhansi & Banka Meghana </div>
+                    <div class="winner-telugu">మ్యూజికల్ చైర్స్ విజేత</div>
+                    <div class="winner-medal"><i class="fa-solid fa-trophy"></i> Winner · 2025</div>
+                </div>
+            </div>
+
+            <div class="winner-card">
+                <div class="winner-photo">
+                    <img src="images/winners/musical-chair-winner-3.jpeg"
+                         alt="Musical Chairs Winner - Winner 3"
+                         loading="lazy">
+                </div>
+                <div class="winner-info">
+                    <div class="winner-category">Musical Chairs Winner</div>
+                    <div class="winner-name">Ramireddy Deekshith Reddy</div>
+                    <div class="winner-telugu">మ్యూజికల్ చైర్స్ విజేత</div>
+                    <div class="winner-medal"><i class="fa-solid fa-trophy"></i> Winner · 2025</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+<!-- =====================================================
+     LAST YEAR MEMORIES
+===================================================== -->
+
+<section class="section-dark py-24 md:py-36">
+
+    <div class="max-w-6xl mx-auto px-6">
+
+
+        <div class="text-center">
+
+            <p class="eyebrow">
+                Looking Back
+            </p>
+
+
+            <h2 class="display section-title">
+                Last Year Memories
+            </h2>
+
+
+            <div class="divider"></div>
+
+
+            <p class="text-sm text-gray-400 max-w-xl mx-auto leading-7">
+
+                గత సంవత్సరం వినాయక చవితి వేడుకల అందమైన జ్ఞాపకాలు..!!
+
+            </p>
+
+        </div>
+
+
+        <div class="memory-wrapper">
+
+
+            <div
+                class="memory-window"
+                id="memory-window"
+            >
+
+
+                <!-- 01 -->
+
+                <div class="memory-slide active">
+
+                    <img
+                        src="images/memories/01.jpeg"
+                        alt="2025 Memory 1"
+                        loading="lazy">
+
+                    <div class="memory-overlay"></div>
+
+                </div>
+
+
+                <!-- 02 -->
+
+                <div class="memory-slide">
+
+                    <img
+                        src="images/memories/02.jpeg"
+                        alt="2025 Memory 2"
+                        loading="lazy">
+
+                    <div class="memory-overlay"></div>
+
+                </div>
+
+
+                <!-- 03 -->
+
+                <div class="memory-slide">
+
+                    <img
+                        src="images/memories/05.jpeg"
+                        alt="2025 Memory 3"
+                        loading="lazy">
+
+                    <div class="memory-overlay"></div>
+
+                </div>
+
+
+                <!-- 04 -->
+
+                <div class="memory-slide">
+
+                    <img
+                        src="images/memories/04.jpeg"
+                        alt="2025 Memory 4"
+                        loading="lazy">
+
+                    <div class="memory-overlay"></div>
+
+                </div>
+
+
+                <!-- 05 -->
+
+                <div class="memory-slide">
+
+                    <img
+                        src="images/memories/03.jpeg"
+                        alt="2025 Memory 5"
+                        loading="lazy">
+
+                    <div class="memory-overlay"></div>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- PREVIOUS / COUNTER / NEXT -->
+
+            <div class="memory-navigation">
+
+
+                <button
+                    id="memory-prev"
+                    class="memory-nav-btn"
+                    aria-label="Previous memory">
+
+                    <i class="fa-solid fa-chevron-left"></i>
+
+                </button>
+
+
+                <div class="memory-counter">
+
+                    <span id="memory-current">
+                        01
+                    </span>
+
+                    &nbsp; / &nbsp;
+
+                    05
+
+                </div>
+
+
+                <button
+                    id="memory-next"
+                    class="memory-nav-btn"
+                    aria-label="Next memory">
+
+                    <i class="fa-solid fa-chevron-right"></i>
+
+                </button>
+
+
+            </div>
+
+
+            <!-- DOTS -->
+
+            <div
+                class="memory-dots"
+                id="memory-dots">
+
+                <button
+                    class="memory-dot active"
+                    data-slide="0">
+                </button>
+
+                <button
+                    class="memory-dot"
+                    data-slide="1">
+                </button>
+
+                <button
+                    class="memory-dot"
+                    data-slide="2">
+                </button>
+
+                <button
+                    class="memory-dot"
+                    data-slide="3">
+                </button>
+
+                <button
+                    class="memory-dot"
+                    data-slide="4">
+                </button>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+
+<!-- =====================================================
+     VIDEO MEMORIES
+     Replace videos/video1.mp4 with your own video later.
+===================================================== -->
+<section class="section-dark py-24 md:py-36 video-memories-section">
+    <div class="max-w-6xl mx-auto px-6">
+
+        <div class="video-section-intro">
+            <p class="eyebrow">Special Moments</p>
+
+            <h2 class="display section-title">
+                Celebration Videos
+            </h2>
+
+            <div class="divider"></div>
+
+            <p class="text-sm text-gray-400 max-w-xl mx-auto leading-7">
+                Relive the beautiful moments of our Vinayaka celebrations.
+            </p>
+        </div>
+
+        <div class="video-grid">
+
+            <!-- VIDEO 1 -->
+            <div class="video-card">
+                <div class="video-frame">
+                    <video class="celebration-video" preload="metadata" playsinline>
+                        <source src="videos/video1.mp4" type="video/mp4">
+                        Your browser does not support HTML5 video.
+                    </video>
+                </div>
+
+                <div class="video-controls">
+                        <button class="video-control-btn video-toggle-btn" type="button" aria-label="Play or pause video">
+                            <i class="fa-solid fa-play"></i>
+                        </button>
+                        <button class="video-control-btn video-stop-btn" type="button" aria-label="Stop video">
+                            <i class="fa-solid fa-stop"></i>
+                        </button>
+                        <input class="video-progress" type="range" min="0" max="100" value="0" aria-label="Video progress">
+                        <button class="video-control-btn video-mute-btn" type="button" aria-label="Mute video">
+                            <i class="fa-solid fa-volume-high"></i>
+                        </button>
+                        <button class="video-control-btn video-fullscreen-btn" type="button" aria-label="Fullscreen">
+                            <i class="fa-solid fa-expand"></i>
+                        </button>
+                </div>
+
+                <div class="video-caption">
+                    <div class="video-caption-title">Celebration Moments</div>
+                    <div class="video-caption-telugu">వేడుకల జ్ఞాపకాలు</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- =====================================================
+     YOUTH COMMITTEE
+===================================================== -->
+
+<section class="section-dark py-20 md:py-28">
+
+    <div class="max-w-6xl mx-auto px-6">
+
+
+        <div class="text-center mb-10">
+
+            <p class="eyebrow">
+                Our Team
+            </p>
+
+
+            <h2 class="display text-4xl md:text-6xl mt-3">
+                Sri Ram Youth Committee
+            </h2>
+
+
+            <div class="divider"></div>
+
+        </div>
+
+
+        <div class="committee-banner">
+
+            <img
+                src="images/youth-committee-banner.jpg"
+                alt="Sri Ram Youth Committee"
+                loading="lazy">
+
+            <div class="committee-overlay"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     VENUE
+===================================================== -->
+
+<section class="section-deep py-24 md:py-36 venue">
+
+    <div class="max-w-6xl mx-auto px-6">
+
+
+        <p class="eyebrow">
+            Join Us
+        </p>
+
+
+        <h2 class="display section-title">
+            Celebration Venue
+        </h2>
+
+
+        <div class="divider"></div>
+
+
+        <p class="venue-address">
+            Naidupalli
+            <br>
+            Andhra Pradesh
+        </p>
+
+
+        <div class="map-wrapper">
+
+            <iframe
+                src="https://www.google.com/maps?q=13.2594672,79.0596371&z=15&output=embed"
+                loading="lazy"
+                allowfullscreen>
+            </iframe>
+
+        </div>
+
+
+        <a
+            href="https://maps.app.goo.gl/b9B8MnHRBv6fa5EQA"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="gold-button">
+
+            <i class="fa-solid fa-location-arrow"></i>
+
+            Get Directions
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FINAL INVITATION
+===================================================== -->
+
+<section class="final-section">
+
+    <div class="max-w-5xl mx-auto px-6">
+
+
+        <p class="eyebrow">
+            With Love & Devotion
+        </p>
+
+
+        <h2 class="telugu final-title final-telugu">
+            గణపతి బప్పా మోరయా
+        </h2>
+
+
+        <p class="final-text">
+
+            May Lord Ganesha bless every home with
+            happiness, prosperity and peace.
+
+        </p>
+
+
+        <div class="divider"></div>
+
+
+        <p class="display text-3xl md:text-5xl">
+            మీ అందరినీ ఆహ్వానిస్తున్నాము...
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="footer-name">
+        Sri Ram Youth
+    </div>
+
+
+    <p class="footer-text">
+
+        Vinayaka Chavithi
+        · Devotion
+        · Tradition
+        · Togetherness
+
+    </p>
+
+</footer>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+
+/* =====================================================
+   GSAP
+===================================================== */
+
+gsap.registerPlugin(ScrollTrigger);
+
+
+/* =====================================================
+   CINEMATIC VINAYAKA BACKGROUND MOTION
+===================================================== */
+
+const introVinayaka =
+    document.getElementById("intro-vinayaka");
+
+if (introVinayaka) {
+
+    gsap.set(introVinayaka, {
+        xPercent: -50,
+        yPercent: -50,
+        scale: .92,
+        rotation: -1.5,
+        transformOrigin: "50% 50%"
+    });
+
+    gsap.to(introVinayaka, {
+        scale: 1.045,
+        rotation: 1.5,
+        y: -10,
+        duration: 5.5,
+        ease: "sine.inOut",
+        repeat: -1,
+        yoyo: true
+    });
+
+    gsap.to(introVinayaka, {
+        opacity: .20,
+        duration: 3.2,
+        ease: "sine.inOut",
+        repeat: -1,
+        yoyo: true
+    });
+}
+
+
+/* =====================================================
+   INTRO
+===================================================== */
+
+const intro =
+    document.getElementById("intro");
+
+const curtainLeft =
+    document.getElementById("curtain-left");
+
+const curtainRight =
+    document.getElementById("curtain-right");
+
+const introContent =
+    document.getElementById("intro-content");
+
+const enterBtn =
+    document.getElementById("enter-btn");
+
+const bgAudio =
+    document.getElementById("bg-audio");
+
+
+const introTimeline =
+    gsap.timeline({
+        paused: true
+    });
+
+
+introTimeline
+
+.to(
+    introContent,
+    {
+        opacity: 0,
+        y: -25,
+        duration: .7,
+        ease: "power2.in"
+    }
+)
+
+.to(
+    introVinayaka,
+    {
+        opacity: 0,
+        scale: 1.12,
+        duration: 1.25,
+        ease: "power2.out"
+    },
+    "<"
+)
+
+.to(
+    curtainLeft,
+    {
+        xPercent: -100,
+        duration: 1.5,
+        ease: "power4.inOut"
+    },
+    "-=.2"
+)
+
+.to(
+    curtainRight,
+    {
+        xPercent: 100,
+        duration: 1.5,
+        ease: "power4.inOut"
+    },
+    "<"
+)
+
+.to(
+    intro,
+    {
+        opacity: 0,
+        duration: .5,
+
+        onComplete: () => {
+            intro.style.display = "none";
+        }
+    },
+    "-=.4"
+);
+
+
+enterBtn.addEventListener(
+    "click",
+    () => {
+
+        bgAudio.volume = .35;
+
+        bgAudio.play().catch(() => {
+            console.log(
+                "Audio playback requires user interaction."
+            );
+        });
+
+        introTimeline.play();
+
+    }
+);
+
+
+/* =====================================================
+   HERO ANIMATION
+===================================================== */
+
+gsap.from(
+    ".hero-small",
+    {
+        opacity: 0,
+        y: 20,
+        duration: 1,
+        delay: 1.2
+    }
+);
+
+
+gsap.from(
+    ".hero-title",
+    {
+        opacity: 0,
+        y: 50,
+        duration: 1.4,
+        delay: 1.4,
+        ease: "power3.out"
+    }
+);
+
+
+gsap.from(
+    ".hero-subtitle",
+    {
+        opacity: 0,
+        y: 20,
+        duration: 1,
+        delay: 1.9
+    }
+);
+
+
+gsap.from(
+    ".hero-telugu",
+    {
+        opacity: 0,
+        y: 15,
+        duration: 1,
+        delay: 2.1
+    }
+);
+
+
+/* =====================================================
+   DAY CHAPTER ANIMATION
+===================================================== */
+
+gsap.utils
+.toArray(".day-chapter")
+.forEach(
+    (chapter, index) => {
+
+        gsap.from(
+            chapter,
+            {
+                opacity: 0,
+
+                x:
+                    index % 2 === 0
+                        ? -55
+                        : 55,
+
+                duration: 1,
+
+                ease:
+                    "power3.out",
+
+                scrollTrigger: {
+
+                    trigger: chapter,
+
+                    start:
+                        "top 78%",
+
+                    once: true
+
+                }
+            }
+        );
+
+    }
+);
+
+
+/* =====================================================
+   EVENT ANIMATION
+===================================================== */
+
+gsap.utils
+.toArray(".ceremony-event")
+.forEach(
+    (event) => {
+
+        gsap.from(
+            event,
+            {
+                opacity: 0,
+                y: 12,
+                duration: .5,
+
+                scrollTrigger: {
+
+                    trigger: event,
+
+                    start:
+                        "top 90%",
+
+                    once: true
+
+                }
+            }
+        );
+
+    }
+);
+
+
+/* =====================================================
+   IDOL ANIMATION
+===================================================== */
+
+gsap.utils
+.toArray(".idol-card")
+.forEach(
+    (card) => {
+
+        gsap.from(
+            card,
+            {
+                opacity: 0,
+                y: 45,
+                duration: .8,
+
+                scrollTrigger: {
+
+                    trigger: card,
+
+                    start:
+                        "top 85%",
+
+                    once: true
+
+                }
+            }
+        );
+
+    }
+);
+
+
+/* =====================================================
+   OTHER ANIMATIONS
+===================================================== */
+
+gsap.utils
+.toArray(
+    ".divine-image, .memory-window, .committee-banner"
+)
+.forEach(
+    (element) => {
+
+        gsap.from(
+            element,
+            {
+                opacity: 0,
+                y: 40,
+                duration: 1,
+
+                scrollTrigger: {
+
+                    trigger: element,
+
+                    start:
+                        "top 85%",
+
+                    once: true
+
+                }
+            }
+        );
+
+    }
+);
+
+
+/* =====================================================
+   MEMORY SLIDER
+   2.5 SECOND AUTO PLAY
+===================================================== */
+
+const slides =
+    document.querySelectorAll(
+        ".memory-slide"
+    );
+
+const dots =
+    document.querySelectorAll(
+        ".memory-dot"
+    );
+
+const currentCounter =
+    document.getElementById(
+        "memory-current"
+    );
+
+const previousButton =
+    document.getElementById(
+        "memory-prev"
+    );
+
+const nextButton =
+    document.getElementById(
+        "memory-next"
+    );
+
+const memoryWindow =
+    document.getElementById(
+        "memory-window"
+    );
+
+
+let currentSlide = 0;
+
+let memoryTimer;
+
+
+/* =====================================================
+   SHOW SLIDE
+===================================================== */
+
+function showMemory(index) {
+
+    if (index < 0) {
+        index =
+            slides.length - 1;
+    }
+
+    if (index >= slides.length) {
+        index = 0;
+    }
+
+
+    slides.forEach(
+        (slide, i) => {
+
+            slide.classList.toggle(
+                "active",
+                i === index
+            );
+
+        }
+    );
+
+
+    dots.forEach(
+        (dot, i) => {
+
+            dot.classList.toggle(
+                "active",
+                i === index
+            );
+
+        }
+    );
+
+
+    currentCounter.textContent =
+        String(index + 1)
+        .padStart(2, "0");
+
+
+    currentSlide = index;
+
+}
+
+
+/* =====================================================
+   NEXT
+===================================================== */
+
+function nextMemory() {
+
+    showMemory(
+        currentSlide + 1
+    );
+
+}
+
+
+/* =====================================================
+   PREVIOUS
+===================================================== */
+
+function previousMemory() {
+
+    showMemory(
+        currentSlide - 1
+    );
+
+}
+
+
+/* =====================================================
+   AUTO PLAY
+===================================================== */
+
+function startMemorySlider() {
+
+    clearInterval(
+        memoryTimer
+    );
+
+    memoryTimer =
+        setInterval(
+            nextMemory,
+            2500
+        );
+
+}
+
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+nextButton.addEventListener(
+    "click",
+    () => {
+
+        nextMemory();
+
+        startMemorySlider();
+
+    }
+);
+
+
+previousButton.addEventListener(
+    "click",
+    () => {
+
+        previousMemory();
+
+        startMemorySlider();
+
+    }
+);
+
+
+/* =====================================================
+   DOTS
+===================================================== */
+
+dots.forEach(
+    (dot) => {
+
+        dot.addEventListener(
+            "click",
+            () => {
+
+                showMemory(
+                    Number(
+                        dot.dataset.slide
+                    )
+                );
+
+                startMemorySlider();
+
+            }
+        );
+
+    }
+);
+
+
+/* =====================================================
+   TOUCH SWIPE
+===================================================== */
+
+let touchStartX = 0;
+
+let touchEndX = 0;
+
+
+memoryWindow.addEventListener(
+    "touchstart",
+    (event) => {
+
+        touchStartX =
+            event.changedTouches[0].screenX;
+
+        clearInterval(
+            memoryTimer
+        );
+
+    },
+    {
+        passive: true
+    }
+);
+
+
+memoryWindow.addEventListener(
+    "touchend",
+    (event) => {
+
+        touchEndX =
+            event.changedTouches[0].screenX;
+
+
+        const distance =
+            touchEndX - touchStartX;
+
+
+        if (Math.abs(distance) > 45) {
+
+            if (distance < 0) {
+                nextMemory();
+            } else {
+                previousMemory();
+            }
+
+        }
+
+
+        startMemorySlider();
+
+    },
+    {
+        passive: true
+    }
+);
+
+
+/* =====================================================
+   START
+===================================================== */
+
+showMemory(0);
+
+startMemorySlider();
+
+
+/* =====================================================
+   FLOATING PARTICLES
+===================================================== */
+
+function createParticles() {
+
+    for (
+        let i = 0;
+        i < 35;
+        i++
+    ) {
+
+        const particle =
+            document.createElement(
+                "div"
+            );
+
+        particle.className =
+            "particle";
+
+
+        particle.style.left =
+            Math.random() * 100
+            + "vw";
+
+
+        particle.style.top =
+            Math.random() * 100
+            + "vh";
+
+
+        particle.style.opacity =
+            Math.random() * .6
+            + .1;
+
+
+        document.body.appendChild(
+            particle
+        );
+
+
+        gsap.to(
+            particle,
+            {
+
+                y:
+                    -(
+                        80 +
+                        Math.random() * 180
+                    ),
+
+                x:
+                    (
+                        Math.random() - .5
+                    ) * 80,
+
+                duration:
+                    5 +
+                    Math.random() * 8,
+
+                repeat: -1,
+
+                yoyo: true,
+
+                ease:
+                    "sine.inOut",
+
+                delay:
+                    Math.random() * 5
+
+            }
+        );
+
+    }
+
+}
+
+
+createParticles();
+
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+if (
+    window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches
+) {
+
+    gsap.globalTimeline
+        .timeScale(.2);
+
+}
+
+
+
+/* =====================================================
+   CELEBRATION VIDEOS
+   Custom play / pause / stop / progress / mute / fullscreen.
+===================================================== */
+const celebrationVideos = document.querySelectorAll(".celebration-video");
+let bgWasPlayingBeforeVideo = false;
+
+celebrationVideos.forEach((video) => {
+    const card = video.closest(".video-card");
+    const toggleButton = card.querySelector(".video-toggle-btn");
+    const stopButton = card.querySelector(".video-stop-btn");
+    const muteButton = card.querySelector(".video-mute-btn");
+    const fullscreenButton = card.querySelector(".video-fullscreen-btn");
+    const progress = card.querySelector(".video-progress");
+
+    const updateToggle = () => {
+        toggleButton.innerHTML = video.paused
+            ? '<i class="fa-solid fa-play"></i>'
+            : '<i class="fa-solid fa-pause"></i>';
+        toggleButton.setAttribute("aria-label", video.paused ? "Play video" : "Pause video");
+    };
+
+    const updateProgress = () => {
+        progress.value = video.duration ? (video.currentTime / video.duration) * 100 : 0;
+    };
+
+    const playVideo = async () => {
+        celebrationVideos.forEach((otherVideo) => {
+            if (otherVideo !== video) {
+                otherVideo.pause();
+                otherVideo.currentTime = 0;
+                otherVideo.closest(".video-card").classList.remove("playing");
+            }
+        });
+
+        bgWasPlayingBeforeVideo = !bgAudio.paused && !bgAudio.ended;
+        bgAudio.pause();
+
+        try {
+            await video.play();
+        } catch (error) {
+            console.log("Video playback requires user interaction.");
+        }
+    };
+
+    toggleButton.addEventListener("click", () => {
+        if (video.paused) playVideo();
+        else video.pause();
+    });
+
+    stopButton.addEventListener("click", () => {
+        video.pause();
+        video.currentTime = 0;
+        card.classList.remove("playing");
+        updateProgress();
+        updateToggle();
+        if (bgWasPlayingBeforeVideo) {
+            bgAudio.play().catch(() => {});
+            bgWasPlayingBeforeVideo = false;
+        }
+    });
+
+    muteButton.addEventListener("click", () => {
+        video.muted = !video.muted;
+        muteButton.innerHTML = video.muted
+            ? '<i class="fa-solid fa-volume-xmark"></i>'
+            : '<i class="fa-solid fa-volume-high"></i>';
+        muteButton.setAttribute("aria-label", video.muted ? "Unmute video" : "Mute video");
+    });
+
+    fullscreenButton.addEventListener("click", async () => {
+        try {
+            if (document.fullscreenElement) {
+                await document.exitFullscreen();
+            } else {
+                await card.requestFullscreen();
+            }
+        } catch (error) {
+            console.log("Fullscreen is not available.");
+        }
+    });
+
+    progress.addEventListener("input", () => {
+        if (video.duration) {
+            video.currentTime = (Number(progress.value) / 100) * video.duration;
+        }
+    });
+
+    video.addEventListener("loadedmetadata", updateProgress);
+    video.addEventListener("timeupdate", updateProgress);
+
+    video.addEventListener("play", () => {
+        bgAudio.pause();
+        card.classList.add("playing");
+        updateToggle();
+    });
+
+    video.addEventListener("pause", () => {
+        card.classList.remove("playing");
+        updateToggle();
+    });
+
+    video.addEventListener("ended", () => {
+        card.classList.remove("playing");
+        video.currentTime = 0;
+        updateProgress();
+        updateToggle();
+        if (bgWasPlayingBeforeVideo) {
+            bgAudio.play().catch(() => {});
+            bgWasPlayingBeforeVideo = false;
+        }
+    });
+
+    updateToggle();
+});
+
+</script>
+
+</body>
+</html>

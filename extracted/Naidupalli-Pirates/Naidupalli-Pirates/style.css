@@ -1,0 +1,775 @@
+/* ========================================
+   NAIDUPALLI PIRATES
+   WEBSITE CSS
+======================================== */
+
+
+/* ========================================
+   RESET
+======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f5f5;
+    color: #171717;
+    line-height: 1.6;
+}
+
+body.no-scroll {
+    overflow: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+html, body {
+    overflow-x: hidden;
+}
+
+button {
+    font-family: inherit;
+}
+
+
+/* ========================================
+   HEADER
+======================================== */
+
+.header {
+    width: 100%;
+    min-height: 75px;
+    background: rgba(10, 10, 10, 0.96);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 6%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    transition: transform 0.3s ease;
+}
+
+.logo img {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    display: block;
+}
+
+.logo:hover {
+    transform: scale(1.03);
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 700;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.navbar a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+    width: 0;
+    height: 2px;
+    background: orange;
+    transition: width 0.3s ease;
+}
+
+.navbar a:hover {
+    color: orange;
+}
+
+.navbar a:hover::after {
+    width: 100%;
+}
+
+
+/* ========================================
+   HERO
+======================================== */
+
+.hero {
+    min-height: calc(100vh - 75px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    background-image: url("Images/Team.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 0, 0, 0.84),
+            rgba(0, 0, 0, 0.48),
+            rgba(0, 0, 0, 0.84)
+        );
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1000px;
+    padding: 30px 20px;
+    animation: heroAppear 1s ease;
+}
+
+.hero-small {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+    color: orange;
+}
+
+.hero-content h1 {
+    font-size: clamp(48px, 8vw, 90px);
+    line-height: 0.95;
+    letter-spacing: 3px;
+    font-weight: 900;
+    margin-bottom: 25px;
+    text-shadow: 0 5px 25px rgba(0, 0, 0, 0.7);
+}
+
+.hero-tagline {
+    font-size: clamp(18px, 3vw, 27px);
+    font-weight: 500;
+    margin-bottom: 35px;
+    color: #f2f2f2;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.hero-button {
+    border: 2px solid orange;
+    background: orange;
+    color: #111;
+    padding: 15px 34px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.hero-button:hover {
+    background: transparent;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.share-button {
+    padding: 15px 28px;
+    border: 2px solid white;
+    border-radius: 50px;
+    background: transparent;
+    color: white;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.share-button:hover {
+    background: white;
+    color: #111;
+    transform: translateY(-3px);
+}
+
+
+/* ========================================
+   GENERAL SECTIONS
+======================================== */
+
+section {
+    padding: 100px 6%;
+}
+
+.section-heading {
+    text-align: center;
+    max-width: 750px;
+    margin: 0 auto 55px;
+}
+
+.section-heading span {
+    display: block;
+    color: #e67e00;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+}
+
+.section-heading h2 {
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: 1.1;
+    margin-bottom: 15px;
+    font-weight: 900;
+}
+
+.section-heading p {
+    color: #777;
+    font-size: 16px;
+}
+
+
+/* ========================================
+   PLAYERS
+======================================== */
+
+.players-section {
+    background: #f5f5f5;
+}
+
+.players {
+    max-width: 1250px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.player {
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+    border: 1px solid #eeeeee;
+}
+
+.player:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 18px 35px rgba(0, 0, 0, 0.15);
+}
+
+.player img {
+    width: 100%;
+    max-width: 100%;
+    height: 285px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.player:hover img {
+    transform: scale(1.04);
+}
+
+.player h3 {
+    padding: 18px 10px;
+    font-size: 19px;
+    text-align: center;
+    font-weight: 800;
+}
+
+
+/* ========================================
+   TROPHIES
+======================================== */
+
+.trophies-section {
+    background:
+        linear-gradient(
+            135deg,
+            #111111,
+            #1b1b1b
+        );
+    color: white;
+}
+
+.trophies-section .section-heading p {
+    color: #aaaaaa;
+}
+
+.trophies {
+    max-width: 1150px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.trophy {
+    background: #ffffff;
+    color: #171717;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.trophy:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+.trophy-image {
+    background: #eeeeee;
+    height: 300px;
+    overflow: hidden;
+}
+
+.trophy-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.trophy:hover .trophy-image img {
+    transform: scale(1.05);
+}
+
+.trophy-content {
+    padding: 20px;
+    text-align: center;
+}
+
+.trophy-label {
+    color: #e67e00;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.trophy h3 {
+    font-size: 23px;
+    margin: 5px 0;
+}
+
+.trophy p {
+    color: #777;
+    font-size: 15px;
+}
+
+
+/* ========================================
+   GALLERY
+======================================== */
+
+.gallery-section {
+    background: #ffffff;
+}
+
+.gallery-title {
+    text-align: center;
+    font-size: 25px;
+    margin: 60px 0 30px;
+    font-weight: 800;
+}
+
+.video-heading {
+    margin-top: 90px;
+}
+
+.gallery {
+    max-width: 1250px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.gallery-item {
+    height: 250px;
+    overflow: hidden;
+    border-radius: 14px;
+    background: #eeeeee;
+    cursor: pointer;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.1);
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.08);
+}
+
+
+/* ========================================
+   VIDEOS
+======================================== */
+
+.videos {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.video-item {
+    background: #111;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.video-item video {
+    width: 100%;
+    display: block;
+    background: #000;
+}
+
+
+/* ========================================
+   LIGHTBOX
+======================================== */
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.92);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    z-index: 2000;
+}
+
+.lightbox.active {
+    display: flex;
+}
+
+.lightbox img {
+    max-width: 92vw;
+    max-height: 88vh;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.6);
+}
+
+.close-lightbox {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    background: white;
+    color: #111;
+    font-size: 30px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 2001;
+    transition: transform 0.2s ease;
+}
+
+.close-lightbox:hover {
+    transform: rotate(90deg);
+}
+
+
+/* ========================================
+   FOOTER
+======================================== */
+
+footer {
+    background: #090909;
+    color: white;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.footer-logo {
+    font-size: 23px;
+    font-weight: 900;
+    margin-bottom: 10px;
+}
+
+footer > p {
+    color: #aaa;
+    font-size: 14px;
+}
+
+.footer-line {
+    width: 70px;
+    height: 2px;
+    background: orange;
+    margin: 25px auto;
+}
+
+.designed-by {
+    color: #ffffff;
+    font-size: 15px;
+    margin-bottom: 12px;
+}
+
+.designed-by strong {
+    color: orange;
+    font-weight: 800;
+}
+
+.copyright {
+    font-size: 12px !important;
+    color: #666 !important;
+}
+
+
+/* ========================================
+   ANIMATION
+======================================== */
+
+@keyframes heroAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 1000px) {
+
+    .players {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .trophies {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gallery {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 700px) {
+
+    .header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 5%;
+    }
+
+    .logo {
+        font-size: 17px;
+    }
+
+    .navbar {
+        gap: 18px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .navbar a {
+        font-size: 13px;
+    }
+
+    .hero {
+        min-height: calc(100vh - 120px);
+    }
+
+    .hero-small {
+        font-size: 11px;
+        letter-spacing: 2px;
+    }
+
+    .hero-content h1 {
+        font-size: 48px;
+    }
+
+    section {
+        padding: 75px 5%;
+    }
+
+    .players {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .player img {
+        height: 250px;
+    }
+
+    .trophies {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .trophy-image {
+        height: 240px;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .gallery-item {
+        height: 210px;
+    }
+
+    .videos {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* ========================================
+   SMALL MOBILE
+======================================== */
+
+@media (max-width: 480px) {
+
+    .logo {
+        font-size: 15px;
+    }
+
+    .logo img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .navbar {
+        gap: 13px;
+    }
+
+    .navbar a {
+        font-size: 12px;
+    }
+
+    .hero-content h1 {
+        font-size: 42px;
+        letter-spacing: 2px;
+    }
+
+    .hero-tagline {
+        font-size: 17px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .hero-button,
+    .share-button {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .players {
+        grid-template-columns: 1fr;
+    }
+
+    .player img {
+        height: 330px;
+    }
+
+    .trophies {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-item {
+        height: 280px;
+    }
+
+    .section-heading {
+        margin-bottom: 40px;
+    }
+
+    .gallery-title {
+        font-size: 22px;
+    }
+
+}
