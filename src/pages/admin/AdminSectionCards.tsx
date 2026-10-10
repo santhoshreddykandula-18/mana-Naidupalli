@@ -708,11 +708,9 @@ export function AdminSectionCards() {
                 </div>
               )}
               {previewCard.button_text && previewCard.button_link && (
-                <a href={previewCard.button_link} className="inline-block">
-                  <Button variant={previewCard.button_variant || 'primary'}>
-                    {previewCard.button_text}
-                  </Button>
-                </a>
+                <Button variant={previewCard.button_variant || 'primary'}>
+                  <a href={previewCard.button_link} className="text-white">{previewCard.button_text}</a>
+                </Button>
               )}
             </div>
             <div className="text-sm text-text-secondary">

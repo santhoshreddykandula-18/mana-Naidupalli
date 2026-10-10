@@ -78,10 +78,8 @@ CREATE POLICY "Admin full access events" ON events
 CREATE TABLE IF NOT EXISTS temples (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   name TEXT NOT NULL,
-  deity TEXT NOT NULL,
-  description TEXT NOT NULL,
-  timings TEXT NOT NULL,
   festival TEXT NOT NULL,
+  location TEXT NOT NULL,
   image_url TEXT,
   status TEXT NOT NULL DEFAULT 'draft' CHECK (status IN ('draft', 'published')),
   created_at TIMESTAMPTZ DEFAULT NOW(),

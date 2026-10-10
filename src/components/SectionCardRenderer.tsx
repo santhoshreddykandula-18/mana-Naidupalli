@@ -512,6 +512,13 @@ export function SectionCardContainer({ pageKey, sectionKey, className }: { pageK
   }
 
   if (cards.length === 0) {
+    // Return fallback content for known home page sections so the site isn't empty
+    if (pageKey === 'home') {
+      return renderFallbackSection(sectionKey, className);
+    }
+    if (pageKey === 'explore') {
+      return renderExploreFallback(sectionKey, className);
+    }
     return null;
   }
 
@@ -522,4 +529,63 @@ export function SectionCardContainer({ pageKey, sectionKey, className }: { pageK
       ))}
     </div>
   );
+}
+
+// Fallback static sections for when DB has no cards yet
+function renderFallbackSection(sectionKey: string, className?: string) {
+  switch (sectionKey) {
+    case 'hero':
+      return (
+        <div className={clsx('relative rounded-3xl overflow-hidden', className)}>
+          <div className="absolute inset-0 bg-gradient-to-r from-primary-dark/90 via-primary-dark/70 to-primary/50" />
+          <div className="relative z-10 p-8 md:p-12 lg:p-16 min-h-[320px] md:min-h-[384px] lg:min-h-[500px] flex items-center">
+            <div className="w-full text-white">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 tracking-tight">Welcome to Mana Naidupalli</h1>
+              <p className="text-xl md:text-2xl mb-6 font-medium opacity-90">Digital Village Portal</p>
+              <p className="text-lg md:text-xl mb-8 max-w-2xl opacity-90">Discover our rich heritage, stay updated with village news, and access digital services.</p>
+              <Link to="/explore">
+                <Button variant="secondary" size="lg" className="bg-white/10 hover:bg-white/20 border-white/30 text-white">
+                  Explore Village <ArrowRight size={20} className="ml-2" />
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      );
+    case 'announcements':
+      return (
+        <div className={className}>
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-2xl font-bold text-text-primary">Latest Announcements</h2>
+            <Link to="/announcements">
+              <Button variant="ghost" size="sm">
+                View All <ArrowRight size={14} className="ml-1" />
+              </Button>
+            </Link>
+          </div>
+          <Card variant="outlined" padding="lg" className="bg-primary-light/30 border-primary/20">
+            <div className="text-center py-8">
+              <Bell className="w-12 h-12 text-primary mx-auto mb-3 opacity-50" />
+              <p className="text-text-secondary text-lg">No announcements available at the moment.</p>
+            </div>
+          </Card>
+        </div>
+      );
+    default:
+      return null;
+  }
+}
+
+function renderExploreFallback(sectionKey: string, className?: string) {
+  if (sectionKey === 'header') {
+    return (
+      <div className={className}>
+        <div className="text-center max-w-3xl mx-auto py-12">
+          <h1 className="text-4xl md:text-5xl font-bold text-text-primary mb-6">Explore Mana Naidupalli</h1>
+          <p className="text-lg md:text-xl text-text-secondary">Discover everything our beautiful village has to offer - from ancient temples to community events.</p>
+        </div>
+      </div>
+    );
+  }
+  return null;
 }

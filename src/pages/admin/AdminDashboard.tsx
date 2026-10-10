@@ -45,7 +45,7 @@ const adminNavSections = [
     items: [
       { label: 'Announcements', route: '/admin/announcements', icon: MegaphoneIcon, color: 'primary' as ColorType, description: 'Post village announcements & notices' },
       { label: 'Events', route: '/admin/events', icon: Calendar, color: 'blue' as ColorType, description: 'Schedule festivals & community events' },
-      { label: 'Temples', route: '/admin/temples', icon: Building2, color: 'gold' as ColorType, description: 'Manage temple information & timings' },
+      { label: 'Temples', route: '/admin/temples', icon: Building2, color: 'gold' as ColorType, description: 'Manage temple information & festivals' },
       { label: 'Sri Ram Youth', route: '/admin/sri-ram-youth', icon: Video, color: 'gold' as ColorType, description: 'Youth cultural content & media' },
     ],
   },
