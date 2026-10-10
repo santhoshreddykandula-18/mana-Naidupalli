@@ -181,6 +181,9 @@ export function FileUpload({
                    displayPreview?.match(/\.(mp4|webm|ogg|mov)$/i) !== null ||
                    value?.match(/\.(mp4|webm|ogg|mov)$/i) !== null;
 
+  // Safety: if only images are allowed, never render video player
+  const shouldRenderVideo = isVideo && allowedTypes.includes('video');
+
   return (
     <div className={clsx('space-y-3', className)}>
       <label className="block text-sm font-medium text-text-primary mb-1">{label}</label>
@@ -221,7 +224,7 @@ export function FileUpload({
           </div>
         ) : displayPreview && showPreview ? (
           <div className="relative max-w-md mx-auto">
-            {isVideo ? (
+            {shouldRenderVideo ? (
               <video
                 src={displayPreview}
                 controls
