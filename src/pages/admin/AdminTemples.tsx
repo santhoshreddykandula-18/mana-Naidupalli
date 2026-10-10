@@ -162,8 +162,8 @@ export function AdminTemples() {
               <tr>
                 <th className="px-6 py-4 text-xs font-semibold text-text-secondary uppercase tracking-wider">Image</th>
                 <th className="px-6 py-4 text-xs font-semibold text-text-secondary uppercase tracking-wider">Name</th>
-                <th className="px-6 py-4 text-xs font-semibold text-text-secondary uppercase tracking-wider">Deity</th>
                 <th className="px-6 py-4 text-xs font-semibold text-text-secondary uppercase tracking-wider">Festival</th>
+                <th className="px-6 py-4 text-xs font-semibold text-text-secondary uppercase tracking-wider">Location</th>
                 <th className="px-6 py-4 text-xs font-semibold text-text-secondary uppercase tracking-wider">Status</th>
                 <th className="px-6 py-4 text-xs font-semibold text-text-secondary uppercase tracking-wider text-right">Actions</th>
               </tr>
@@ -212,24 +212,24 @@ export function AdminTemples() {
                     {isEditing === temple.id ? (
                       <input
                         type="text"
-                        value={editData.deity || ''}
-                        onChange={(e) => handleInputChange('deity', e.target.value)}
-                        className="w-full px-2 py-1 border border-primary rounded text-sm focus:outline-none focus:ring-2 focus:ring-primary"
-                      />
-                    ) : (
-                      <span className="text-text-secondary">{temple.deity}</span>
-                    )}
-                  </td>
-                  <td className="px-6 py-4">
-                    {isEditing === temple.id ? (
-                      <input
-                        type="text"
                         value={editData.festival || ''}
                         onChange={(e) => handleInputChange('festival', e.target.value)}
                         className="w-full px-2 py-1 border border-primary rounded text-sm focus:outline-none focus:ring-2 focus:ring-primary"
                       />
                     ) : (
                       <span className="text-text-secondary">{temple.festival}</span>
+                    )}
+                  </td>
+                  <td className="px-6 py-4">
+                    {isEditing === temple.id ? (
+                      <input
+                        type="text"
+                        value={editData.location || ''}
+                        onChange={(e) => handleInputChange('location', e.target.value)}
+                        className="w-full px-2 py-1 border border-primary rounded text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                      />
+                    ) : (
+                      <span className="text-text-secondary">{temple.location}</span>
                     )}
                   </td>
                   <td className="px-6 py-4">
@@ -312,47 +312,23 @@ export function AdminTemples() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-text-primary mb-1">Deity *</label>
+                <label className="block text-sm font-medium text-text-primary mb-1">Festival *</label>
                 <Input
-                  value={editData.deity || ''}
-                  onChange={(e) => handleInputChange('deity', e.target.value)}
-                  placeholder="Enter deity name"
+                  value={editData.festival || ''}
+                  onChange={(e) => handleInputChange('festival', e.target.value)}
+                  placeholder="e.g., Annual Brahmotsavam in March"
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-text-primary mb-1">Description *</label>
-                <textarea
-                  value={editData.description || ''}
-                  onChange={(e) => handleInputChange('description', e.target.value)}
-                  placeholder="Enter temple description"
-                  rows={3}
-                  className="w-full px-4 py-3 border border-border-color rounded-xl text-text-primary placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                <label className="block text-sm font-medium text-text-primary mb-1">Location *</label>
+                <Input
+                  value={editData.location || ''}
+                  onChange={(e) => handleInputChange('location', e.target.value)}
+                  placeholder="Enter temple location"
                   required
                 />
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-text-primary mb-1">Timings *</label>
-                  <Input
-                    value={editData.timings || ''}
-                    onChange={(e) => handleInputChange('timings', e.target.value)}
-                    placeholder="e.g., 5:00 AM - 12:00 PM, 4:00 PM - 9:00 PM"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-text-primary mb-1">Festival *</label>
-                  <Input
-                    value={editData.festival || ''}
-                    onChange={(e) => handleInputChange('festival', e.target.value)}
-                    placeholder="e.g., Annual Brahmotsavam in March"
-                    required
-                  />
-                </div>
               </div>
 
               <div>

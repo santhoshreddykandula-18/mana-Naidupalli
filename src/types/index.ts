@@ -25,10 +25,8 @@ export interface Event {
 export interface Temple {
   id: string;
   name: string;
-  deity: string;
-  description: string;
-  timings: string;
   festival: string;
+  location: string;
   image_url?: string;
   status: 'published' | 'draft';
 }
@@ -97,4 +95,28 @@ export interface GovernmentService {
   link: string;
   icon: string;
   status: 'published' | 'draft';
+}
+
+export interface SectionCard {
+  id: string;
+  page_key: string;
+  section_key: string;
+  title: string;
+  subtitle?: string;
+  content?: string; // JSON string for rich content
+  image_url?: string;
+  image_alt?: string;
+  card_type: 'default' | 'hero' | 'featured' | 'grid' | 'list' | 'banner' | 'highlight' | 'stats' | 'cta';
+  display_order: number;
+  status: 'published' | 'draft';
+  is_visible: boolean;
+  background_color?: string;
+  text_color?: string;
+  button_text?: string;
+  button_link?: string;
+  button_variant?: 'primary' | 'secondary' | 'ghost' | 'outline';
+  metadata?: Record<string, unknown>;
+  created_at: string;
+  updated_at: string;
+  published_at?: string;
 }

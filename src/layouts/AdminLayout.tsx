@@ -1,11 +1,12 @@
 import { Outlet, Link, useLocation } from 'react-router-dom';
-import { LayoutDashboard, Megaphone, Calendar, Building2, Trophy, Leaf, Landmark, Users, Image, Bell, Settings, LogOut, Menu, X, ChevronLeft } from 'lucide-react';
+import { LayoutDashboard, Megaphone, Calendar, Building2, Trophy, Leaf, Landmark, Users, Image, Bell, Settings, LogOut, Menu, X, ChevronLeft, Layout } from 'lucide-react';
 import { useState } from 'react';
 import { clsx } from 'clsx';
 import { Logo } from '../components/ui/Logo';
 
 const ADMIN_NAV_ITEMS = [
   { label: 'Dashboard', route: '/admin', icon: LayoutDashboard },
+  { label: 'Section Cards', route: '/admin/section-cards', icon: Layout },
   { label: 'Announcements', route: '/admin/announcements', icon: Megaphone },
   { label: 'Events', route: '/admin/events', icon: Calendar },
   { label: 'Temples', route: '/admin/temples', icon: Building2 },

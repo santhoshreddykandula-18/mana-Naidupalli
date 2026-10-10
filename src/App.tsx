@@ -27,6 +27,7 @@ import { AdminSriRamYouth } from './pages/admin/AdminSriRamYouth';
 import { AdminGallery } from './pages/admin/AdminGallery';
 import { AdminNotifications } from './pages/admin/AdminNotifications';
 import { AdminSettings } from './pages/admin/AdminSettings';
+import { AdminSectionCards } from './pages/admin/AdminSectionCards';
 import { supabase } from './lib/supabase';
 import { useEffect, useState } from 'react';
 import { LanguageProvider } from './context/LanguageContext';
@@ -149,6 +150,11 @@ function App() {
           <Route path="/admin/settings" element={
             <ProtectedAdminRoute>
               <AdminSettings />
+            </ProtectedAdminRoute>
+          } />
+          <Route path="/admin/section-cards" element={
+            <ProtectedAdminRoute>
+              <AdminSectionCards />
             </ProtectedAdminRoute>
           } />
         </Route>

@@ -1,5 +1,5 @@
 import { supabase, handleSupabaseError } from './supabase';
-import type { Announcement, Event, Temple, Match, CricketTeam, GalleryItem, CropInfo, GovernmentService } from '../types';
+import type { Announcement, Event, Temple, Match, CricketTeam, GalleryItem, CropInfo, GovernmentService, SectionCard } from '../types';
 
 // ============================================
 // ANNOUNCEMENTS SERVICE
@@ -785,6 +785,157 @@ export const notificationsService = {
 
   async send(id: string): Promise<Notification> {
     return this.update(id, { status: 'sent', sentAt: new Date().toISOString() });
+  },
+};
+
+// ============================================
+// SECTION CARDS SERVICE (Dynamic Section Card Management System)
+// ============================================
+export const sectionCardsService = {
+  // Fetch all published section cards for a page (public)
+  async getByPage(pageKey: string): Promise<SectionCard[]> {
+    const { data, error } = await supabase
+      .from('section_cards')
+      .select('*')
+      .eq('page_key', pageKey)
+      .eq('status', 'published')
+      .eq('is_visible', true)
+      .order('display_order', { ascending: true });
+
+    if (error) throw new Error(handleSupabaseError(error));
+    return data || [];
+  },
+
+  // Fetch all section cards for a page (admin - includes drafts)
+  async getByPageAdmin(pageKey: string): Promise<SectionCard[]> {
+    const { data, error } = await supabase
+      .from('section_cards')
+      .select('*')
+      .eq('page_key', pageKey)
+      .order('display_order', { ascending: true });
+
+    if (error) throw new Error(handleSupabaseError(error));
+    return data || [];
+  },
+
+  // Fetch section cards by page and section key (public)
+  async getByPageAndSection(pageKey: string, sectionKey: string): Promise<SectionCard[]> {
+    const { data, error } = await supabase
+      .from('section_cards')
+      .select('*')
+      .eq('page_key', pageKey)
+      .eq('section_key', sectionKey)
+      .eq('status', 'published')
+      .eq('is_visible', true)
+      .order('display_order', { ascending: true });
+
+    if (error) throw new Error(handleSupabaseError(error));
+    return data || [];
+  },
+
+  // Fetch single section card by ID
+  async getById(id: string): Promise<SectionCard | null> {
+    const { data, error } = await supabase
+      .from('section_cards')
+      .select('*')
+      .eq('id', id)
+      .single();
+
+    if (error) throw new Error(handleSupabaseError(error));
+    return data;
+  },
+
+  // Create new section card
+  async create(card: Omit<SectionCard, 'id' | 'created_at' | 'updated_at' | 'published_at'>): Promise<SectionCard> {
+    const insertData = {
+      ...card,
+      published_at: card.status === 'published' ? new Date().toISOString() : null,
+    };
+    const { data, error } = await supabase
+      .from('section_cards')
+      .insert([insertData])
+      .select()
+      .single();
+
+    if (error) throw new Error(handleSupabaseError(error));
+    return data;
+  },
+
+  // Update section card
+  async update(id: string, updates: Partial<SectionCard>): Promise<SectionCard> {
+    const updateData = { ...updates };
+    if (updates.status === 'published' && !updates.published_at) {
+      updateData.published_at = new Date().toISOString();
+    }
+    const { data, error } = await supabase
+      .from('section_cards')
+      .update(updateData)
+      .eq('id', id)
+      .select()
+      .single();
+
+    if (error) throw new Error(handleSupabaseError(error));
+    return data;
+  },
+
+  // Delete section card
+  async delete(id: string): Promise<void> {
+    const { error } = await supabase
+      .from('section_cards')
+      .delete()
+      .eq('id', id);
+
+    if (error) throw new Error(handleSupabaseError(error));
+  },
+
+  // Publish/Unpublish section card
+  async setStatus(id: string, status: 'published' | 'draft'): Promise<SectionCard> {
+    const updates: Partial<SectionCard> = { status };
+    if (status === 'published') {
+      updates.published_at = new Date().toISOString();
+    }
+    return this.update(id, updates);
+  },
+
+  // Reorder section cards (bulk update display_order)
+  async reorder(cards: { id: string; display_order: number }[]): Promise<void> {
+    const updates = cards.map(card =>
+      supabase.from('section_cards').update({ display_order: card.display_order }).eq('id', card.id)
+    );
+    const results = await Promise.all(updates);
+    const errors = results.filter(r => r.error).map(r => r.error);
+    if (errors.length > 0) {
+      throw new Error(handleSupabaseError(errors[0]));
+    }
+  },
+
+  // Search/filter section cards (admin)
+  async search(params: {
+    pageKey?: string;
+    sectionKey?: string;
+    status?: 'published' | 'draft';
+    title?: string;
+    cardType?: string;
+    limit?: number;
+    offset?: number;
+  }): Promise<{ cards: SectionCard[]; total: number }> {
+    let query = supabase.from('section_cards').select('*', { count: 'exact' });
+
+    if (params.pageKey) query = query.eq('page_key', params.pageKey);
+    if (params.sectionKey) query = query.eq('section_key', params.sectionKey);
+    if (params.status) query = query.eq('status', params.status);
+    if (params.title) query = query.ilike('title', `%${params.title}%`);
+    if (params.cardType) query = query.eq('card_type', params.cardType);
+
+    query = query.order('display_order', { ascending: true });
+
+    if (params.limit) query = query.limit(params.limit);
+    if (params.offset) query = query.range(params.offset, params.offset + (params.limit || 10) - 1);
+
+    const { data, error, count } = await query;
+
+    if (error) throw new Error(handleSupabaseError(error));
+    return { cards: data || [], total: count || 0 };
   },
 };
 

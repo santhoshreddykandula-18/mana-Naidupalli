@@ -274,6 +274,50 @@ CREATE POLICY "Admin full access government services" ON government_services
   );
 
 -- ============================================
+-- SECTION CARDS TABLE (Dynamic Section Card Management System)
+-- ============================================
+CREATE TABLE IF NOT EXISTS section_cards (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  page_key TEXT NOT NULL, -- 'home', 'explore', 'announcements', 'events', 'temples', 'cricket', 'agriculture', 'government', 'gallery', 'sri-ram-youth', 'education', 'emergency'
+  section_key TEXT NOT NULL, -- unique identifier for the section within the page (e.g., 'hero', 'announcements', 'events', 'temples', 'cricket', 'youth', 'gallery', 'location')
+  title TEXT NOT NULL,
+  subtitle TEXT,
+  content TEXT, -- JSON string for rich content (description, cta_text, cta_link, etc.)
+  image_url TEXT,
+  image_alt TEXT,
+  card_type TEXT NOT NULL DEFAULT 'default' CHECK (card_type IN ('default', 'hero', 'featured', 'grid', 'list', 'banner', 'highlight', 'stats', 'cta')),
+  display_order INTEGER NOT NULL DEFAULT 0,
+  status TEXT NOT NULL DEFAULT 'draft' CHECK (status IN ('draft', 'published')),
+  is_visible BOOLEAN NOT NULL DEFAULT true,
+  background_color TEXT,
+  text_color TEXT,
+  button_text TEXT,
+  button_link TEXT,
+  button_variant TEXT DEFAULT 'primary' CHECK (button_variant IN ('primary', 'secondary', 'ghost', 'outline')),
+  metadata JSONB DEFAULT '{}', -- flexible field for extra data (e.g., video_url, tags, etc.)
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW(),
+  published_at TIMESTAMPTZ
+);
+
+CREATE INDEX IF NOT EXISTS idx_section_cards_page_section ON section_cards(page_key, section_key, display_order);
+CREATE INDEX IF NOT EXISTS idx_section_cards_page_status ON section_cards(page_key, status, display_order);
+CREATE INDEX IF NOT EXISTS idx_section_cards_status ON section_cards(status);
+
+ALTER TABLE section_cards ENABLE ROW LEVEL SECURITY;
+
+-- Public can read published section cards
+CREATE POLICY "Public read published section cards" ON section_cards
+  FOR SELECT USING (status = 'published' AND is_visible = true);
+
+-- Admins can do everything
+CREATE POLICY "Admin full access section cards" ON section_cards
+  FOR ALL USING (
+    auth.jwt() ->> 'role' = 'admin' OR
+    auth.jwt() ->> 'email' = 'admin@mana-naidupalli.in'
+  );
+
+-- ============================================
 -- NOTIFICATIONS TABLE
 -- ============================================
 CREATE TABLE IF NOT EXISTS notifications (
@@ -312,7 +356,8 @@ VALUES
   ('agriculture', 'agriculture', true, 5242880, ARRAY['image/jpeg', 'image/png', 'image/webp', 'image/gif']),
   ('gallery', 'gallery', true, 10485760, ARRAY['image/jpeg', 'image/png', 'image/webp', 'image/gif']),
   ('sri-ram-youth', 'sri-ram-youth', true, 10485760, ARRAY['image/jpeg', 'image/png', 'image/webp', 'image/gif', 'video/mp4', 'video/webm']),
-  ('government', 'government', true, 5242880, ARRAY['image/jpeg', 'image/png', 'image/webp', 'image/gif'])
+  ('government', 'government', true, 5242880, ARRAY['image/jpeg', 'image/png', 'image/webp', 'image/gif']),
+  ('section-cards', 'section-cards', true, 5242880, ARRAY['image/jpeg', 'image/png', 'image/webp', 'image/gif'])
 ON CONFLICT (id) DO NOTHING;
 
 -- Storage policies - Public read access for all buckets
@@ -350,6 +395,28 @@ CREATE POLICY "Admin write events" ON storage.objects
   );
 
 -- Apply similar policies for: temples, cricket, agriculture, gallery, sri-ram-youth, government
+
+-- Storage policies for section-cards bucket
+CREATE POLICY "Public read section-cards" ON storage.objects
+  FOR SELECT USING (bucket_id = 'section-cards');
+
+CREATE POLICY "Admin write section-cards" ON storage.objects
+  FOR INSERT WITH CHECK (
+    bucket_id = 'section-cards' AND
+    (auth.jwt() ->> 'role' = 'admin' OR auth.jwt() ->> 'email' = 'admin@mana-naidupalli.in')
+  );
+
+CREATE POLICY "Admin update section-cards" ON storage.objects
+  FOR UPDATE USING (
+    bucket_id = 'section-cards' AND
+    (auth.jwt() ->> 'role' = 'admin' OR auth.jwt() ->> 'email' = 'admin@mana-naidupalli.in')
+  );
+
+CREATE POLICY "Admin delete section-cards" ON storage.objects
+  FOR DELETE USING (
+    bucket_id = 'section-cards' AND
+    (auth.jwt() ->> 'role' = 'admin' OR auth.jwt() ->> 'email' = 'admin@mana-naidupalli.in')
+  );
 
 -- ============================================
 -- TRIGGERS FOR UPDATED_AT
@@ -390,6 +457,9 @@ CREATE TRIGGER update_government_services_updated_at BEFORE UPDATE ON government
   FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
 
 CREATE TRIGGER update_notifications_updated_at BEFORE UPDATE ON notifications
+  FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+
+CREATE TRIGGER update_section_cards_updated_at BEFORE UPDATE ON section_cards
   FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
 
 -- ============================================

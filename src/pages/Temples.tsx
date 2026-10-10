@@ -1,4 +1,4 @@
-import { Clock, Calendar, Info } from 'lucide-react';
+import { Calendar, Info, MapPin } from 'lucide-react';
 import { Card, CardContent } from '../components/ui/Card';
 import { Badge } from '../components/ui/Badge';
 import { Button } from '../components/ui/Button';
@@ -21,22 +21,21 @@ function TempleCard({ temple }: { temple: typeof temples[0] }) {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
             <div className="absolute bottom-3 left-3 text-white">
-              <Badge variant="gold" className="mb-1">{t(temple.deity)}</Badge>
+              <Badge variant="gold" className="mb-1">{temple.festival}</Badge>
             </div>
           </div>
         )}
         <CardContent className="flex-1 flex flex-col pt-2">
           <h3 className="text-xl font-bold text-text-primary mb-2 line-clamp-1 group-hover:text-gold transition-colors">{t(temple.name)}</h3>
-          <p className="text-text-secondary text-sm flex-1 line-clamp-3 mb-4">{t(temple.description)}</p>
 
           <div className="space-y-2 mt-auto pt-4 border-t border-border-color">
             <div className="flex items-center gap-2 text-text-secondary text-sm">
-              <Clock size={16} className="text-gold" />
-              <span>{temple.timings}</span>
-            </div>
-            <div className="flex items-center gap-2 text-text-secondary text-sm">
               <Calendar size={16} className="text-gold" />
               <span className="truncate">{temple.festival}</span>
+            </div>
+            <div className="flex items-center gap-2 text-text-secondary text-sm">
+              <MapPin size={16} className="text-gold" />
+              <span className="truncate">{temple.location}</span>
             </div>
           </div>
         </CardContent>
@@ -72,22 +71,19 @@ export function TemplesPage() {
               <div className="p-6 md:p-8 flex flex-col justify-center">
                 <Badge variant="gold" className="w-fit mb-4">{t('temples.featured')}</Badge>
                 <h2 className="text-2xl md:text-3xl font-bold text-text-primary mb-2">{temples[0].name}</h2>
-                <h3 className="text-gold font-medium mb-4">{temples[0].deity}</h3>
-                <p className="text-text-secondary mb-6 leading-relaxed">
-                  {temples[0].description}
-                </p>
+                <h3 className="text-gold font-medium mb-4">{temples[0].festival}</h3>
                 <div className="space-y-3 mb-6">
-                  <div className="flex items-center gap-3 text-text-secondary text-sm">
-                    <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm">
-                      <Clock size={16} className="text-gold" />
-                    </div>
-                    <span>{temples[0].timings}</span>
-                  </div>
                   <div className="flex items-center gap-3 text-text-secondary text-sm">
                     <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm">
                       <Calendar size={16} className="text-gold" />
                     </div>
                     <span>{temples[0].festival}</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-text-secondary text-sm">
+                    <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm">
+                      <MapPin size={16} className="text-gold" />
+                    </div>
+                    <span>{temples[0].location}</span>
                   </div>
                 </div>
                 <Link to={`/temples/${temples[0].id}`}>

@@ -43,6 +43,7 @@ export function FileUpload({
   const [isDragging, setIsDragging] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const [previewIsVideo, setPreviewIsVideo] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const validateFile = useCallback((file: File): boolean => {
@@ -87,10 +88,12 @@ export function FileUpload({
     if (file.type.startsWith('image/')) {
       const url = URL.createObjectURL(file);
       setPreviewUrl(url);
+      setPreviewIsVideo(false);
       onPreviewChange?.(url);
     } else if (file.type.startsWith('video/')) {
       const url = URL.createObjectURL(file);
       setPreviewUrl(url);
+      setPreviewIsVideo(true);
       onPreviewChange?.(url);
     }
   }, [onPreviewChange]);
@@ -152,6 +155,7 @@ export function FileUpload({
 
   const handleRemove = useCallback(() => {
     setPreviewUrl(null);
+    setPreviewIsVideo(false);
     onChange('');
     onPreviewChange?.(null);
     setError(null);
@@ -162,18 +166,20 @@ export function FileUpload({
     onChange(url);
     if (url) {
       setPreviewUrl(url);
+      setPreviewIsVideo(url.match(/\.(mp4|webm|ogg|mov)$/i) !== null);
       onPreviewChange?.(url);
     } else {
       setPreviewUrl(null);
+      setPreviewIsVideo(false);
       onPreviewChange?.(null);
     }
   }, [onChange, onPreviewChange]);
 
   // Use provided value or preview for display
   const displayPreview = previewUrl || value;
-  const isVideo = displayPreview?.match(/\.(mp4|webm|ogg|mov)$/i) ||
-                   value?.match(/\.(mp4|webm|ogg|mov)$/i) ||
-                   previewUrl?.match(/^blob:/); // blob URLs for videos
+  const isVideo = previewIsVideo ||
+                   displayPreview?.match(/\.(mp4|webm|ogg|mov)$/i) !== null ||
+                   value?.match(/\.(mp4|webm|ogg|mov)$/i) !== null;
 
   return (
     <div className={clsx('space-y-3', className)}>

@@ -1,5 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
-import { Calendar, Clock, MapPin, Building, ArrowLeft, Info, Bell, Flame } from 'lucide-react';
+import { Calendar, MapPin, Building, ArrowLeft, Bell, Flame } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/Card';
 import { Badge } from '../components/ui/Badge';
 import { Button } from '../components/ui/Button';
@@ -43,7 +43,7 @@ export function TempleDetail() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-              <Badge variant="gold" className="mb-2">{temple.deity}</Badge>
+              <Badge variant="gold" className="mb-2">{temple.festival}</Badge>
               <h1 className="text-2xl md:text-3xl font-bold">{temple.name}</h1>
             </div>
           </div>
@@ -51,27 +51,13 @@ export function TempleDetail() {
 
         {!temple.image_url && (
           <header className="mb-8">
-            <Badge variant="gold" className="mb-3">{temple.deity}</Badge>
+            <Badge variant="gold" className="mb-3">{temple.festival}</Badge>
             <h1 className="text-3xl md:text-4xl font-bold text-text-primary mb-4">{temple.name}</h1>
           </header>
         )}
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 space-y-6">
-            <Card variant="outlined" padding="lg">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Info size={20} className="text-primary" />
-                  {t('common.about') || 'About This Temple'}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="prose prose-gray max-w-none text-text-secondary leading-relaxed">
-                  <p className="whitespace-pre-line">{temple.description}</p>
-                </div>
-              </CardContent>
-            </Card>
-
             <Card variant="outlined" padding="lg">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
@@ -96,15 +82,6 @@ export function TempleDetail() {
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-lg bg-primary-light flex items-center justify-center">
-                      <Clock size={20} className="text-primary" />
-                    </div>
-                    <div>
-                      <p className="font-medium text-text-primary">{t('common.timings') || 'Daily Timings'}</p>
-                      <p className="text-text-secondary">{temple.timings}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-primary-light flex items-center justify-center">
                       <Calendar size={20} className="text-primary" />
                     </div>
                     <div>
@@ -118,7 +95,7 @@ export function TempleDetail() {
                     </div>
                     <div>
                       <p className="font-medium text-text-primary">{t('common.location') || 'Location'}</p>
-                      <p className="text-text-secondary">Naidupalli Village</p>
+                      <p className="text-text-secondary">{temple.location || 'Naidupalli Village'}</p>
                     </div>
                   </div>
                 </div>
@@ -135,21 +112,13 @@ export function TempleDetail() {
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div>
-                  <p className="text-text-secondary text-sm font-medium">{t('common.deity') || 'Deity'}</p>
-                  <p className="text-text-primary font-semibold">{temple.deity}</p>
-                </div>
-                <div className="pt-4 border-t border-border-color">
-                  <p className="text-text-secondary text-sm font-medium">{t('common.timings') || 'Timings'}</p>
-                  <p className="text-text-primary font-semibold">{temple.timings}</p>
-                </div>
                 <div className="pt-4 border-t border-border-color">
                   <p className="text-text-secondary text-sm font-medium">{t('common.annualFestival') || 'Annual Festival'}</p>
                   <p className="text-text-primary font-semibold">{temple.festival}</p>
                 </div>
                 <div className="pt-4 border-t border-border-color">
                   <p className="text-text-secondary text-sm font-medium">{t('common.location') || 'Location'}</p>
-                  <p className="text-text-primary font-semibold">Naidupalli Village</p>
+                  <p className="text-text-primary font-semibold">{temple.location || 'Naidupalli Village'}</p>
                 </div>
               </CardContent>
             </Card>
