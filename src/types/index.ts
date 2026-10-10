@@ -25,6 +25,7 @@ export interface Event {
 export interface Temple {
   id: string;
   name: string;
+  deity: string;
   festival: string;
   location: string;
   image_url?: string;

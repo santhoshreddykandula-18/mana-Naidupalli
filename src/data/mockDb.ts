@@ -11,6 +11,7 @@ export const temples: Temple[] = [
   {
     id: '1',
     name: 'Gurrapa Swami Temple',
+    deity: 'Gurrapa Swami',
     festival: 'Annual Jatara in March',
     location: 'Mana Naidupalli Village Center',
     image_url: '/temples/Gurrapa Swami Temple.png',
@@ -19,6 +20,7 @@ export const temples: Temple[] = [
   {
     id: '2',
     name: 'Poleramma Thalli Temple',
+    deity: 'Goddess Poleramma',
     festival: 'Annual Poleramma Jatara in April',
     location: 'North Street, Mana Naidupalli',
     image_url: '/temples/Poleramma thalli Temple.png',
@@ -27,6 +29,7 @@ export const temples: Temple[] = [
   {
     id: '3',
     name: 'Shivalayam',
+    deity: 'Lord Shiva',
     festival: 'Maha Shivaratri',
     location: 'Main Road, Mana Naidupalli',
     image_url: '/temples/Shivalayam.png',
@@ -35,6 +38,7 @@ export const temples: Temple[] = [
   {
     id: '4',
     name: 'Vinayaka Swami Temple',
+    deity: 'Lord Ganesha',
     festival: 'Vinayaka Chavithi',
     location: 'Temple Street, Mana Naidupalli',
     image_url: '/temples/Vinayaka Swami Temple.png',

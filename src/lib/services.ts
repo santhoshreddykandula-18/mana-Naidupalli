@@ -738,6 +738,7 @@ export interface Notification {
   scheduledFor?: string;
   sentAt?: string;
   createdAt: string;
+  read?: boolean;
 }
 
 export const notificationsService = {
@@ -785,6 +786,185 @@ export const notificationsService = {
 
   async send(id: string): Promise<Notification> {
     return this.update(id, { status: 'sent', sentAt: new Date().toISOString() });
+  },
+};
+
+// ============================================
+// PUSH SUBSCRIPTIONS SERVICE (Web Push)
+// ============================================
+export interface PushSubscriptionData {
+  id: string;
+  endpoint: string;
+  p256dh: string;
+  auth: string;
+  user_agent?: string;
+  created_at: string;
+}
+
+export const pushSubscriptionsService = {
+  // Subscribe a user to push notifications
+  async subscribe(subscription: { endpoint: string; keys: { p256dh: string; auth: string } }, userAgent?: string): Promise<PushSubscriptionData> {
+    const { data, error } = await supabase
+      .from('push_subscriptions')
+      .upsert({
+        endpoint: subscription.endpoint,
+        p256dh: subscription.keys.p256dh,
+        auth: subscription.keys.auth,
+        user_agent: userAgent,
+        updated_at: new Date().toISOString(),
+      }, { onConflict: 'endpoint' })
+      .select()
+      .single();
+
+    if (error) throw new Error(handleSupabaseError(error));
+    return data;
+  },
+
+  // Unsubscribe a user
+  async unsubscribe(endpoint: string): Promise<void> {
+    const { error } = await supabase
+      .from('push_subscriptions')
+      .delete()
+      .eq('endpoint', endpoint);
+
+    if (error) throw new Error(handleSupabaseError(error));
+  },
+
+  // Get all subscriptions (admin only)
+  async getAll(): Promise<PushSubscriptionData[]> {
+    const { data, error } = await supabase
+      .from('push_subscriptions')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (error) throw new Error(handleSupabaseError(error));
+    return data || [];
+  },
+
+  // Get subscription count
+  async getCount(): Promise<number> {
+    const { count, error } = await supabase
+      .from('push_subscriptions')
+      .select('*', { count: 'exact', head: true });
+
+    if (error) throw new Error(handleSupabaseError(error));
+    return count || 0;
+  },
+};
+
+// ============================================
+// WEB PUSH NOTIFICATION SERVICE
+// ============================================
+// VAPID keys should be set in environment variables
+// Generate with: npx web-push generate-vapid-keys
+const VAPID_PUBLIC_KEY = import.meta.env.VITE_VAPID_PUBLIC_KEY || '';
+const VAPID_PRIVATE_KEY = import.meta.env.VITE_VAPID_PRIVATE_KEY || '';
+const VAPID_SUBJECT = import.meta.env.VITE_VAPID_SUBJECT || 'mailto:admin@mana-naidupalli.in';
+
+let webPushLib: any = null;
+
+async function getWebPush() {
+  if (!webPushLib) {
+    const webPush = await import('web-push');
+    webPushLib = webPush.default;
+    webPushLib.setVapidDetails(VAPID_SUBJECT, VAPID_PUBLIC_KEY, VAPID_PRIVATE_KEY);
+  }
+  return webPushLib;
+}
+
+export const webPushService = {
+  // Send push notification to all subscribers
+  async sendToAll(payload: { title: string; body: string; icon?: string; badge?: string; data?: any; url?: string }): Promise<{ sent: number; failed: number }> {
+    if (!VAPID_PUBLIC_KEY || !VAPID_PRIVATE_KEY) {
+      console.warn('VAPID keys not configured, skipping push notification');
+      return { sent: 0, failed: 0 };
+    }
+
+    try {
+      const webPush = await getWebPush();
+      const subscriptions = await pushSubscriptionsService.getAll();
+
+      if (subscriptions.length === 0) {
+        return { sent: 0, failed: 0 };
+      }
+
+      const pushPayload = JSON.stringify({
+        title: payload.title,
+        body: payload.body,
+        icon: payload.icon || '/icon-192.png',
+        badge: payload.badge || '/badge-72.png',
+        data: payload.data || {},
+        url: payload.url || '/',
+        actions: [
+          { action: 'open', title: 'Open' },
+          { action: 'close', title: 'Dismiss' }
+        ]
+      });
+
+      let sent = 0;
+      let failed = 0;
+
+      for (const sub of subscriptions) {
+        try {
+          await webPush.sendNotification(
+            {
+              endpoint: sub.endpoint,
+              keys: {
+                p256dh: sub.p256dh,
+                auth: sub.auth,
+              },
+            },
+            pushPayload
+          );
+          sent++;
+        } catch (err: any) {
+          failed++;
+          // If subscription is expired/invalid, remove it
+          if (err.statusCode === 410 || err.statusCode === 404) {
+            await pushSubscriptionsService.unsubscribe(sub.endpoint);
+          }
+          console.error('Push send failed:', err);
+        }
+      }
+
+      return { sent, failed };
+    } catch (err) {
+      console.error('Web push service error:', err);
+      return { sent: 0, failed: 0 };
+    }
+  },
+
+  // Send push notification for a notification record
+  async sendNotification(notification: { title: string; message: string; type: string; url?: string }): Promise<{ sent: number; failed: number }> {
+    return this.sendToAll({
+      title: notification.title,
+      body: notification.message,
+      data: { type: notification.type },
+      url: notification.url || '/',
+    });
+  },
+
+  // Test push notification (for admin testing)
+  async sendTest(endpoint: string): Promise<boolean> {
+    if (!VAPID_PUBLIC_KEY || !VAPID_PRIVATE_KEY) {
+      return false;
+    }
+
+    try {
+      const webPush = await getWebPush();
+      await webPush.sendNotification(
+        JSON.parse(endpoint), // endpoint should be the full subscription object
+        JSON.stringify({
+          title: 'Test Notification',
+          body: 'Push notifications are working!',
+          icon: '/icon-192.png',
+        })
+      );
+      return true;
+    } catch (err) {
+      console.error('Test push failed:', err);
+      return false;
+    }
   },
 };
 

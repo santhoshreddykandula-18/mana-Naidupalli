@@ -78,6 +78,7 @@ CREATE POLICY "Admin full access events" ON events
 CREATE TABLE IF NOT EXISTS temples (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   name TEXT NOT NULL,
+  deity TEXT NOT NULL,
   festival TEXT NOT NULL,
   location TEXT NOT NULL,
   image_url TEXT,
@@ -337,6 +338,46 @@ ALTER TABLE notifications ENABLE ROW LEVEL SECURITY;
 
 CREATE POLICY "Admin full access notifications" ON notifications
   FOR ALL USING (
+    auth.jwt() ->> 'role' = 'admin' OR
+    auth.jwt() ->> 'email' = 'admin@mana-naidupalli.in'
+  );
+
+-- ============================================
+-- PUSH SUBSCRIPTIONS TABLE (for Web Push notifications)
+-- ============================================
+CREATE TABLE IF NOT EXISTS push_subscriptions (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  user_id UUID, -- optional: link to auth user if logged in
+  endpoint TEXT NOT NULL UNIQUE,
+  p256dh TEXT NOT NULL,
+  auth TEXT NOT NULL,
+  user_agent TEXT,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_push_subscriptions_endpoint ON push_subscriptions(endpoint);
+
+ALTER TABLE push_subscriptions ENABLE ROW LEVEL SECURITY;
+
+-- Anyone can insert their subscription (for subscribing)
+CREATE POLICY "Anyone can subscribe" ON push_subscriptions
+  FOR INSERT WITH CHECK (true);
+
+-- Users can delete their own subscription
+CREATE POLICY "Users can delete own subscription" ON push_subscriptions
+  FOR DELETE USING (endpoint = current_setting('request.jwt.claims', true)::json->>'endpoint');
+
+-- Admin can read all subscriptions (for sending notifications)
+CREATE POLICY "Admin read all subscriptions" ON push_subscriptions
+  FOR SELECT USING (
+    auth.jwt() ->> 'role' = 'admin' OR
+    auth.jwt() ->> 'email' = 'admin@mana-naidupalli.in'
+  );
+
+-- Admin can delete any subscription (cleanup)
+CREATE POLICY "Admin delete subscriptions" ON push_subscriptions
+  FOR DELETE USING (
     auth.jwt() ->> 'role' = 'admin' OR
     auth.jwt() ->> 'email' = 'admin@mana-naidupalli.in'
   );

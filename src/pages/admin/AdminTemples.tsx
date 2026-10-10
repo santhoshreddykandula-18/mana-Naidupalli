@@ -162,6 +162,7 @@ export function AdminTemples() {
               <tr>
                 <th className="px-6 py-4 text-xs font-semibold text-text-secondary uppercase tracking-wider">Image</th>
                 <th className="px-6 py-4 text-xs font-semibold text-text-secondary uppercase tracking-wider">Name</th>
+                <th className="px-6 py-4 text-xs font-semibold text-text-secondary uppercase tracking-wider">Deity</th>
                 <th className="px-6 py-4 text-xs font-semibold text-text-secondary uppercase tracking-wider">Festival</th>
                 <th className="px-6 py-4 text-xs font-semibold text-text-secondary uppercase tracking-wider">Location</th>
                 <th className="px-6 py-4 text-xs font-semibold text-text-secondary uppercase tracking-wider">Status</th>
@@ -206,6 +207,18 @@ export function AdminTemples() {
                       />
                     ) : (
                       <p className="font-medium text-text-primary line-clamp-1">{temple.name}</p>
+                    )}
+                  </td>
+                  <td className="px-6 py-4">
+                    {isEditing === temple.id ? (
+                      <input
+                        type="text"
+                        value={editData.deity || ''}
+                        onChange={(e) => handleInputChange('deity', e.target.value)}
+                        className="w-full px-2 py-1 border border-primary rounded text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                      />
+                    ) : (
+                      <span className="text-text-secondary">{temple.deity}</span>
                     )}
                   </td>
                   <td className="px-6 py-4">
@@ -307,6 +320,16 @@ export function AdminTemples() {
                   value={editData.name || ''}
                   onChange={(e) => handleInputChange('name', e.target.value)}
                   placeholder="Enter temple name"
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-text-primary mb-1">Deity *</label>
+                <Input
+                  value={editData.deity || ''}
+                  onChange={(e) => handleInputChange('deity', e.target.value)}
+                  placeholder="Enter deity name"
                   required
                 />
               </div>
